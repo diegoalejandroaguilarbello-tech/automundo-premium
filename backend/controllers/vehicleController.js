@@ -87,8 +87,9 @@ async function listVehicles(req, res, next) {
        INNER JOIN vehicle_models vm ON vm.id = v.model_id
        INNER JOIN brands b ON b.id = vm.brand_id
        ${whereSql}
-       ORDER BY v.created_at DESC, v.id DESC LIMIT :limit OFFSET :offset`,
-      params
+       ORDER BY v.created_at DESC, v.id DESC
+       LIMIT ${params.limit} OFFSET ${params.offset}`,
+       params
     );
 
     const { limit: _limit, offset: _offset, ...countParams } = params;
@@ -345,7 +346,9 @@ async function listAdminVehicles(req, res, next) {
     const whereSql = where.length ? `WHERE ${where.join(" AND ")}` : "";
 
     const [rows] = await pool.execute(
-      `SELECT * FROM vehicles ${whereSql} ORDER BY created_at DESC LIMIT :limit OFFSET :offset`,
+      `SELECT * FROM vehicles ${whereSql}
+      ORDER BY created_at DESC
+      LIMIT ${params.limit} OFFSET ${params.offset}`,
       params
     );
 
