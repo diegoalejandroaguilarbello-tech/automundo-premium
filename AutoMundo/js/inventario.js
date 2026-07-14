@@ -135,6 +135,16 @@ async function loadVehicles({ append = false } = {}) {
   }
 }
 
+function getConditionLabel(condition) {
+  const labels = {
+    new: "Nuevo",
+    used: "Usado",
+    certified: "Certificado"
+  };
+
+  return labels[condition] || "No especificada";
+}
+
 function renderVehicles() {
   elements.counter.textContent = state.total;
   if (!state.vehicles.length) {
@@ -152,9 +162,42 @@ function renderVehicles() {
         <div class="card-content">
   <h3>${escapeHtml(v.name)}</h3>
 
-  <div class="card-info">
-    <span>${escapeHtml(v.year)}</span>
-    <span>${escapeHtml(v.type)}</span>
+  <p class="card-version">
+    ${escapeHtml(v.version || "Versión no especificada")}
+  </p>
+
+  <div class="vehicle-specs">
+    <div class="vehicle-spec">
+      <span>Año</span>
+      <strong>${escapeHtml(v.year || "No especificado")}</strong>
+    </div>
+
+    <div class="vehicle-spec">
+      <span>Tipo</span>
+      <strong>${escapeHtml(v.type || "No especificado")}</strong>
+    </div>
+
+    <div class="vehicle-spec">
+      <span>Condición</span>
+      <strong>${escapeHtml(getConditionLabel(v.condition))}</strong>
+    </div>
+
+    <div class="vehicle-spec">
+      <span>Kilometraje</span>
+      <strong>
+        ${Number(v.mileage || 0).toLocaleString("es-VE")} km
+      </strong>
+    </div>
+
+    <div class="vehicle-spec">
+      <span>Combustible</span>
+      <strong>${escapeHtml(v.fuel || "No especificado")}</strong>
+    </div>
+
+    <div class="vehicle-spec">
+      <span>Transmisión</span>
+      <strong>${escapeHtml(v.transmission || "No especificada")}</strong>
+    </div>
   </div>
 
   <p class="card-description">

@@ -887,3 +887,60 @@
     overflow: visible;
     word-break: break-word;
 }
+.card-version {
+    margin: 4px 0 18px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.vehicle-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.vehicle-spec {
+    min-width: 0;
+    padding: 11px 12px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 10px;
+}
+
+.vehicle-spec span,
+.vehicle-spec strong {
+    display: block;
+}
+
+.vehicle-spec span {
+    margin-bottom: 4px;
+    color: var(--text);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.vehicle-spec strong {
+    color: var(--white);
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.card-description {
+    margin: 0 0 18px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 420px) {
+    .vehicle-specs {
+        grid-template-columns: 1fr;
+    }
+}
