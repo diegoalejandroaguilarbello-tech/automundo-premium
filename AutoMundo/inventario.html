@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMundo Premium</title>
+
+    <meta
+    name="description"
+    content="Concesionario premium de vehículos de lujo">
+
+<link
+    rel="stylesheet"
+    href="css/inventario.css">
+    
+<link
+    rel="stylesheet"
+    href="css/navbar.css">
+
+<link
+    rel="stylesheet"
+    href="css/style.css">    
+
+</head>
+<body>
+<!-- ========================= -->
+<!-- NAVBAR GLOBAL -->
+<!-- ========================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <img
+            src="img/logo.png"
+            alt="AutoMundo Premium">
+
+        <div class="logo-text">
+
+            <h1>AutoMundo</h1>
+
+            <span>PREMIUM</span>
+
+        </div>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+
+            <a href="index.html">
+
+                Inicio
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="inventario.html">
+
+                Inventario
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="servicios.html">
+
+                Servicios
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="financiamiento.html">
+
+                Financiamiento
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="nosotros.html">
+
+                Nosotros
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="contacto.html">
+
+                Contacto
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <div class="navbar-actions">
+
+        <a
+
+            href="https://wa.me/584247245512"
+
+            target="_blank"
+
+            class="btn-whatsapp">
+
+            WhatsApp
+
+        </a>
+
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </button>
+
+</nav>
+
+</header>
+<main id="contenido-principal">
+
+<!-- ========================= -->
+<!-- HERO INVENTARIO -->
+<!-- ========================= -->
+
+<section class="hero-inventario">
+
+    <div class="container">
+
+        <div class="hero-inventario-content">
+
+            <span class="hero-badge">
+
+                Más de 100 vehículos disponibles
+
+            </span>
+
+            <h1>
+
+                Encuentra tu vehículo ideal
+
+            </h1>
+
+            <p>
+
+                Explora nuestra colección de
+                vehículos nuevos y certificados.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- BUSCADOR INVENTARIO -->
+<!-- ========================= -->
+
+<section class="inventario-filtros">
+
+    <div class="container">
+
+        <div class="filtros-box">
+
+            <label for="buscarVehiculo" class="sr-only">Buscar vehículo</label>
+            <input
+
+                type="text"
+
+                id="buscarVehiculo"
+
+                placeholder="Buscar vehículo...">
+
+            <label for="marca" class="sr-only">Filtrar por marca</label>
+            <select id="marca">
+                <option value="">Todas las marcas</option>
+            </select>
+
+            <label for="modelo" class="sr-only">Filtrar por modelo</label>
+            <select id="modelo" disabled>
+                <option value="">Todos los modelos</option>
+            </select>
+
+            <label for="tipo" class="sr-only">Filtrar por tipo</label>
+            <select id="tipo">
+
+                <option value="">Todos los tipos</option>
+
+                <option>SUV</option>
+
+                <option>Sedan</option>
+
+                <option>Pickup</option>
+
+            </select>
+
+            <label for="precio" class="sr-only">Filtrar por precio</label>
+            <select id="precio">
+
+                <option value="">Todos los precios</option>
+
+                <option>0-30000</option>
+
+                <option>30000-60000</option>
+
+                <option>60000-100000</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CONTADOR -->
+<!-- ========================= -->
+
+<section class="contador-inventario">
+
+    <div class="container">
+
+        <h3>
+
+            <span id="contadorVehiculos">
+
+                0
+
+            </span>
+
+            vehículos disponibles
+
+        </h3>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- GRID VEHICULOS -->
+<!-- ========================= -->
+
+<section class="inventario-grid">
+
+    <div class="container">
+
+        <div class="vehiculos-grid"
+
+        id="contenedorVehiculos">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CARGAR MAS -->
+<!-- ========================= -->
+
+<section class="cargar-mas">
+
+    <button id="btnCargar" hidden>
+
+        Ver más vehículos
+
+    </button>
+
+</section>
+
+<!-- ========================= -->
+<!-- CTA FINANCIAMIENTO -->
+<!-- ========================= -->
+
+<section class="cta-inventario">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2>
+
+                ¿Necesitas financiamiento?
+
+            </h2>
+
+            <p>
+
+                Simula tu plan y obtén una
+                propuesta personalizada.
+
+            </p>
+
+            <a
+
+                href="financiamiento.html"
+
+                class="btn">
+
+                Simular financiamiento
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- MODAL VEHICULO -->
+<!-- ========================= -->
+
+<div class="modal" id="modalVehiculo">
+
+    <div class="modal-box">
+
+        <span class="cerrar-modal">
+
+            &times;
+
+        </span>
+
+        <img
+            id="modalImagen"
+
+            src=""
+
+            alt="Vehículo">
+
+        <h2 id="modalNombre"></h2>
+
+        <p id="modalMarca"></p>
+
+        <p id="modalTipo"></p>
+
+        <p id="modalAno"></p>
+
+        <p id="modalPrecio"></p>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- FOOTER PREMIUM -->
+<!-- ========================= -->
+
+</main>
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <!-- COLUMNA 1 -->
+
+            <div class="footer-box">
+
+                <h3>AutoMundo Premium</h3>
+
+                <p>
+
+                    Concesionario especializado en
+                    vehículos premium, ofreciendo
+                    calidad, confianza y excelencia
+                    en cada experiencia.
+
+                </p>
+
+            </div>
+
+            <!-- COLUMNA 2 -->
+
+            <div class="footer-box">
+
+                <h3>Enlaces</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="inventario.html">
+                            Inventario
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="servicios.html">
+                            Servicios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- COLUMNA 3 -->
+
+            <div class="footer-box">
+
+                <h3>Contacto</h3>
+
+                <p>📞 +58 424 724 5512</p>
+
+                <p>✉ contacto@automundo.com</p>
+
+                <p>📍 Venezuela</p>
+
+            </div>
+
+            <!-- COLUMNA 4 -->
+
+            <div class="footer-box">
+
+                <h3>Síguenos</h3>
+
+                <div class="socials">
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        TikTok
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- LINEA -->
+
+        <div class="footer-line"></div>
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoMundo Premium.
+                Todos los derechos reservados.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/inventario.js"></script>
+
+</body>
+</html>

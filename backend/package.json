@@ -1,0 +1,39 @@
+{
+  "name": "proyecto-de-concesionario-backend",
+  "version": "1.0.0",
+  "description": "API REST para proyecto de concesionario de vehículos.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node --check server.js",
+    "db:init": "node sql/init-db.js",
+    "db:migrate": "node sql/migrate.js",
+    "seed": "node sql/seed.js"
+  },
+  "keywords": [
+    "concesionario",
+    "vehiculos",
+    "express",
+    "mysql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "*",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.11.0",
+    "multer": "^2.2.0",
+    "mysql2": "^3.22.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

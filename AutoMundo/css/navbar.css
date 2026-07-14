@@ -1,0 +1,457 @@
+/* ==========================================================
+   NAVBAR PREMIUM
+   Concesionario de Vehículos
+========================================================== */
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+header{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(95%,1400px);
+
+    height:80px;
+
+    padding:0 30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(15,15,15,.95);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    z-index:9999;
+
+    transition:all var(--transition);
+
+}
+
+/* Estado al hacer scroll */
+
+.navbar.scroll{
+
+    top:10px;
+
+    background:rgba(10,10,10,.98);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.45);
+
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo img{
+
+    width:60px;
+
+    aspect-ratio:1;
+
+    object-fit:contain;
+
+}
+
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.logo-text h1{
+
+    color:var(--white);
+
+    font-size:24px;
+
+    line-height:1;
+
+    font-weight:700;
+
+}
+
+.logo-text span{
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================================================
+   MENÚ
+========================================================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:var(--white);
+
+    text-decoration:none;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:color var(--transition);
+
+}
+
+/* Línea inferior */
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:width var(--transition);
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/* Página activa */
+
+.nav-links a.active{
+
+    color:var(--primary);
+
+}
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   ACCIONES DEL NAVBAR
+========================================================== */
+
+.navbar-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+/* ==========================================================
+   BOTÓN WHATSAPP
+========================================================== */
+
+.btn-whatsapp{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px 24px;
+
+    background:var(--primary);
+
+    color:var(--dark);
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    transition:all var(--transition);
+
+}
+
+.btn-whatsapp:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 25px rgba(212,175,55,.35);
+
+}
+
+
+/* ==========================================================
+   MENÚ HAMBURGUESA
+========================================================== */
+
+.menu-toggle{
+
+    display:none;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:6px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.menu-toggle span{
+
+    width:28px;
+
+    height:3px;
+
+    background:var(--white);
+
+    border-radius:20px;
+
+    transition:all var(--transition);
+
+}
+
+
+/* ==========================================================
+   ANIMACIÓN HAMBURGUESA
+========================================================== */
+
+.menu-toggle.active span:nth-child(1){
+
+    transform:translateY(9px) rotate(45deg);
+
+}
+
+.menu-toggle.active span:nth-child(2){
+
+    opacity:0;
+
+    transform:scaleX(0);
+
+}
+
+.menu-toggle.active span:nth-child(3){
+
+    transform:translateY(-9px) rotate(-45deg);
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:992px){
+
+    .navbar{
+
+        padding:0 20px;
+
+        height:78px;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+    .navbar-actions{
+
+        display:none;
+
+    }
+
+    .nav-links{
+
+        position:absolute;
+
+        top:95px;
+
+        left:0;
+
+        width:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:25px;
+
+        padding:35px 0;
+
+        background:var(--dark-secondary);
+
+        border-radius:18px;
+
+        box-shadow:0 15px 35px rgba(0,0,0,.40);
+
+        opacity:0;
+
+        visibility:hidden;
+
+        transform:translateY(-20px);
+
+        transition:all .35s ease;
+
+    }
+
+    .nav-links.active{
+
+        opacity:1;
+
+        visibility:visible;
+
+        transform:translateY(0);
+
+    }
+
+    .nav-links a{
+
+        font-size:18px;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .navbar{
+
+        height:75px;
+
+        padding:0 18px;
+
+    }
+
+    .logo{
+
+        gap:12px;
+
+    }
+
+    .logo img{
+
+        width:50px;
+
+    }
+
+    .logo-text h1{
+
+        font-size:20px;
+
+    }
+
+    .logo-text span{
+
+        font-size:11px;
+
+        letter-spacing:2px;
+
+    }
+
+}
+
+
+@media (max-width:480px){
+
+    .navbar{
+
+        width:95%;
+
+    }
+
+    .logo-text{
+
+        display:none;
+
+    }
+
+}

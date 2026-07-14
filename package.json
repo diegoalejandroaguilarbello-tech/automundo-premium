@@ -1,0 +1,31 @@
+{
+  "name": "proyecto-de-concesionario",
+  "version": "1.0.0",
+  "description": "Proyecto full stack de concesionario de vehículos con frontend HTML, CSS, JavaScript, backend Node.js, Express y MySQL.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "check": "node --check backend/server.js",
+    "db:init": "node backend/sql/init-db.js",
+    "db:migrate": "node backend/sql/migrate.js",
+    "seed": "node backend/sql/seed.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.2",
+    "mysql2": "^3.22.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

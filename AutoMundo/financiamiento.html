@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>AutoMundo Premium</title>
+
+<meta
+    name="description"
+    content="Concesionario premium de vehículos de lujo">
+
+<link
+    rel="stylesheet"
+    href="css/style.css">
+
+<link
+    rel="stylesheet"
+    href="css/navbar.css">
+
+<link
+    rel="stylesheet"
+    href="css/financiamiento.css">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR GLOBAL -->
+<!-- ========================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <img
+            src="img/logo.png"
+            alt="AutoMundo Premium">
+
+        <div class="logo-text">
+
+            <h1>AutoMundo</h1>
+
+            <span>PREMIUM</span>
+
+        </div>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+
+            <a href="index.html">
+
+                Inicio
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="inventario.html">
+
+                Inventario
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="servicios.html">
+
+                Servicios
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="financiamiento.html">
+
+                Financiamiento
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="nosotros.html">
+
+                Nosotros
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="contacto.html">
+
+                Contacto
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <div class="navbar-actions">
+
+        <a
+
+            href="https://wa.me/584247245512"
+
+            target="_blank"
+
+            class="btn-whatsapp">
+
+            WhatsApp
+
+        </a>
+
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </button>
+
+</nav>
+
+</header>
+<main id="contenido-principal">
+
+<section class="financiamiento">
+
+    <div class="fin-hero">
+
+        <span class="tag">FINANCIAMIENTO PREMIUM</span>
+
+        <h2>Simulador de crédito automotriz</h2>
+
+        <p>
+            Estimación orientativa basada en condiciones estándar de concesionario.
+        </p>
+
+    </div>
+
+    <div class="fin-layout">
+
+        <!-- CALCULADORA -->
+        <div class="fin-box">
+
+            <h3>Simulador financiero</h3>
+
+            <label for="precio">Precio del vehículo</label>
+            <input type="range" id="precio" min="10000" max="200000" value="45000">
+            <div class="value" id="precioValue"></div>
+
+            <label for="entrada">Inicial (%)</label>
+            <input type="range" id="entrada" min="10" max="60" value="25">
+            <div class="value" id="entradaValue"></div>
+
+            <label for="meses">Plazo (meses)</label>
+            <select id="meses">
+                <option>24</option>
+                <option selected>36</option>
+                <option>48</option>
+                <option>60</option>
+                <option>72</option>
+            </select>
+
+            <label for="interes">Tasa anual (%)</label>
+            <input type="range" id="interes" min="3" max="14" value="7">
+            <div class="value" id="interesValue"></div>
+
+            <div class="resultado">
+
+                <span>CUOTA ESTIMADA</span>
+
+                <h2 id="cuota">$0</h2>
+
+                <small>
+                    Simulación referencial sujeta a aprobación bancaria
+                </small>
+
+            </div>
+
+        </div>
+
+        <!-- PANEL LATERAL -->
+        <div class="fin-panel">
+
+            <div class="info-card">
+                <h4>✔ Aprobación rápida</h4>
+                <p>Evaluación en menos de 24 horas.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>✔ Tasas preferenciales</h4>
+                <p>Condiciones especiales para vehículos premium.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>✔ Plazos flexibles</h4>
+                <p>Financiación hasta 72 meses.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>✔ Sin complicaciones</h4>
+                <p>Proceso 100% transparente y asesorado.</p>
+            </div>
+
+            <form id="quoteForm" class="quote-form">
+                <h4>Solicitar evaluación</h4>
+                <p>Guarda esta simulación y recibe contacto del equipo comercial.</p>
+
+                <label for="quoteName" class="sr-only">Nombre completo</label>
+                <input type="text" id="quoteName" name="fullName" placeholder="Nombre completo" required>
+                <label for="quoteEmail" class="sr-only">Correo electrónico</label>
+                <input type="email" id="quoteEmail" name="email" placeholder="Correo electrónico" required>
+                <label for="quotePhone" class="sr-only">Teléfono</label>
+                <input type="tel" id="quotePhone" name="phone" placeholder="Teléfono">
+
+                <button type="submit">Enviar solicitud</button>
+                <small id="quoteFormStatus" aria-live="polite"></small>
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FOOTER PREMIUM -->
+<!-- ========================= -->
+
+</main>
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <!-- COLUMNA 1 -->
+
+            <div class="footer-box">
+
+                <h3>AutoMundo Premium</h3>
+
+                <p>
+
+                    Concesionario especializado en
+                    vehículos premium, ofreciendo
+                    calidad, confianza y excelencia
+                    en cada experiencia.
+
+                </p>
+
+            </div>
+
+            <!-- COLUMNA 2 -->
+
+            <div class="footer-box">
+
+                <h3>Enlaces</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="inventario.html">
+                            Inventario
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="servicios.html">
+                            Servicios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- COLUMNA 3 -->
+
+            <div class="footer-box">
+
+                <h3>Contacto</h3>
+
+                <p>📞 +58 424 724 5512</p>
+
+                <p>✉ contacto@automundo.com</p>
+
+                <p>📍 Venezuela</p>
+
+            </div>
+
+            <!-- COLUMNA 4 -->
+
+            <div class="footer-box">
+
+                <h3>Síguenos</h3>
+
+                <div class="socials">
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        TikTok
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- LINEA -->
+
+        <div class="footer-line"></div>
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 AutoMundo Premium.
+                Todos los derechos reservados.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/financiamiento.js"></script>
+
+</body>
+
+</html>

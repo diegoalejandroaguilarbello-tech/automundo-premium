@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Administrativo | AutoMundo</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <main class="admin-page panel-page">
+    <section class="dashboard" id="dashboardSection">
+      <div class="dashboard-header">
+        <div>
+          <h1>Panel Administrativo</h1>
+          <p id="welcomeMessage">Bienvenido</p>
+        </div>
+
+        <button id="logoutButton" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="dashboard-card">
+          <h2>Vehículos</h2>
+          <p>Administra el inventario del concesionario.</p>
+        </article>
+
+        <article class="dashboard-card">
+          <h2>Clientes interesados</h2>
+          <p>Revisa solicitudes de contacto.</p>
+        </article>
+
+        <article class="dashboard-card">
+          <h2>Financiamiento</h2>
+          <p>Consulta solicitudes de financiamiento.</p>
+        </article>
+      </div>
+      
+      <section class="vehicle-form-section">
+  <div class="section-header">
+    <div>
+      <h2>Agregar vehículo</h2>
+      <p>Registra un nuevo vehículo en el inventario del concesionario.</p>
+    </div>
+  </div>
+
+  <form id="vehicleForm" class="vehicle-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="brand">Marca *</label>
+        <input type="text" id="brand" name="brand" placeholder="Toyota" required />
+      </div>
+
+      <div class="form-group">
+        <label for="model">Modelo *</label>
+        <input type="text" id="model" name="model" placeholder="Corolla" required />
+      </div>
+
+      <div class="form-group">
+        <label for="version">Versión</label>
+        <input type="text" id="version" name="version" placeholder="XEI 2.0" />
+      </div>
+
+      <div class="form-group">
+        <label for="year">Año *</label>
+        <input type="number" id="year" name="year" placeholder="2024" min="1950" max="2100" required />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Tipo *</label>
+        <select id="type" name="type" required>
+          <option value="">Seleccionar</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Pickup">Pickup</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Deportivo">Deportivo</option>
+          <option value="Camioneta">Camioneta</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="condition">Condición</label>
+        <select id="condition" name="condition">
+          <option value="new">Nuevo</option>
+          <option value="used">Usado</option>
+          <option value="certified">Certificado</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Precio *</label>
+        <input type="number" id="price" name="price" placeholder="25000" min="0" step="0.01" required />
+      </div>
+
+      <div class="form-group">
+        <label for="mileage">Kilometraje</label>
+        <input type="number" id="mileage" name="mileage" placeholder="0" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label for="fuel">Combustible</label>
+        <select id="fuel" name="fuel">
+          <option value="">Seleccionar</option>
+          <option value="Gasolina">Gasolina</option>
+          <option value="Diésel">Diésel</option>
+          <option value="Híbrido">Híbrido</option>
+          <option value="Eléctrico">Eléctrico</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="transmission">Transmisión</label>
+        <select id="transmission" name="transmission">
+          <option value="">Seleccionar</option>
+          <option value="Automática">Automática</option>
+          <option value="Manual">Manual</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" placeholder="Blanco" />
+      </div>
+
+      <div class="form-group">
+        <label for="status">Estado</label>
+        <select id="status" name="status">
+          <option value="available">Disponible</option>
+          <option value="reserved">Reservado</option>
+          <option value="sold">Vendido</option>
+          <option value="maintenance">Mantenimiento</option>
+        </select>
+      </div>
+
+      <div class="form-group form-group-full">
+        <label for="description">Descripción</label>
+        <textarea id="description" name="description" rows="4" placeholder="Descripción del vehículo"></textarea>
+      </div>
+
+      <div class="form-group form-group-full">
+        <label for="image">Imagen del vehículo</label>
+        <input type="file" id="image" name="image" accept="image/*,.jpg,.jpeg,.jfif,.png,.webp" />
+        <small>Formatos permitidos: JPG, PNG o WEBP. Máximo 5MB.</small>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="primary-btn" id="submitVehicleButton">Guardar vehículo</button>
+      <button type="button" class="secondary-btn hidden" id="cancelEditVehicleButton">Cancelar edición</button>
+      <button type="reset" class="secondary-btn">Limpiar</button>
+    </div>
+
+    <p id="vehicleFormMessage" class="message"></p>
+  </form>
+</section>
+
+      <section class="vehicles-admin-section">
+        <div class="section-header">
+          <div>
+            <h2>Inventario de vehículos</h2>
+            <p>Listado conectado directamente con la base de datos.</p>
+          </div>
+
+          <button id="refreshVehiclesButton" class="secondary-btn">
+            Actualizar lista
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Vehículo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Kilometraje</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="vehiclesTableBody">
+              <tr>
+                <td colspan="6">Cargando vehículos...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="vehicles-admin-section">
+        <div class="section-header">
+          <div>
+            <h2>Clientes interesados</h2>
+            <p>Solicitudes recibidas desde el formulario de contacto.</p>
+          </div>
+
+          <button id="refreshLeadsButton" class="secondary-btn">
+            Actualizar clientes
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Vehículo</th>
+                <th>Origen</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody">
+              <tr>
+                <td colspan="7">Cargando clientes interesados...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="vehicles-admin-section">
+        <div class="section-header">
+          <div>
+            <h2>Cotizaciones de financiamiento</h2>
+            <p>Solicitudes guardadas desde el simulador financiero.</p>
+          </div>
+
+          <button id="refreshQuotesButton" class="secondary-btn">
+            Actualizar cotizaciones
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Vehículo</th>
+                <th>Precio</th>
+                <th>Plazo</th>
+                <th>Cuota</th>
+              </tr>
+            </thead>
+            <tbody id="quotesTableBody">
+              <tr>
+                <td colspan="7">Cargando cotizaciones...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/panel-admin.js"></script>
+</body>
+</html>
