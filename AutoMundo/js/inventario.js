@@ -6,6 +6,7 @@ const state = { vehicles: [], page: 1, total: 0, totalPages: 0, loading: false }
 const elements = {
   container: document.querySelector("#contenedorVehiculos"),
   counter: document.querySelector("#contadorVehiculos"),
+  searchForm: document.querySelector("#formBuscarVehiculo"),
   search: document.querySelector("#buscarVehiculo"),
   brand: document.querySelector("#marca"),
   model: document.querySelector("#modelo"),
@@ -242,10 +243,15 @@ function openModal(vehicle) {
   document.querySelector("#modalPrecio").textContent = `$${vehicle.price.toLocaleString("en-US")}`;
 }
 
-let searchTimer;
-elements.search.addEventListener("input", () => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => loadVehicles(), 350);
+elements.searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  loadVehicles();
+});
+
+elements.search.addEventListener("search", () => {
+  if (!elements.search.value.trim()) {
+    loadVehicles();
+  }
 });
 elements.brand.addEventListener("change", async () => { await loadModels(); await loadVehicles(); });
 elements.model.addEventListener("change", () => loadVehicles());

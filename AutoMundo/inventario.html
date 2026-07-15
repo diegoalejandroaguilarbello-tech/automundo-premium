@@ -187,14 +187,23 @@
 
         <div class="filtros-box">
 
-            <label for="buscarVehiculo" class="sr-only">Buscar vehículo</label>
+          <form id="formBuscarVehiculo" class="busqueda-inventario" role="search">
+            <label for="buscarVehiculo" class="sr-only">
+                Buscar vehículo
+            </label>
+
             <input
+              type="search"
+              id="buscarVehiculo"
+              name="search"
+              maxlength="100"
+              autocomplete="off"
+              placeholder="Marca, modelo o versión...">
 
-                type="text"
-
-                id="buscarVehiculo"
-
-                placeholder="Buscar vehículo...">
+             <button type="submit" id="btnBuscarVehiculo">
+                Buscar
+              </button>
+          </form>
 
             <label for="marca" class="sr-only">Filtrar por marca</label>
             <select id="marca">

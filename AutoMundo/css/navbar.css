@@ -455,3 +455,58 @@ header{
     }
 
 }
+/* ==========================================================
+   BOTÓN DEL MENÚ MÓVIL
+========================================================== */
+
+.menu-toggle {
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    flex: 0 0 46px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 12px;
+    background: rgba(212, 175, 55, 0.08);
+    appearance: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    background: var(--primary);
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+    border-color: var(--primary);
+    background: rgba(212, 175, 55, 0.16);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+}
+
+.menu-toggle.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.menu-toggle.active span {
+    background: #111;
+}
+
+html[data-theme="light"] .menu-toggle {
+    background: #ffffff;
+    border-color: rgba(157, 119, 15, 0.32);
+    box-shadow: 0 7px 18px rgba(15, 23, 42, 0.10);
+}
+
+html[data-theme="light"] .menu-toggle span {
+    background: #151a24;
+}
+
+html[data-theme="light"] .menu-toggle.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+html[data-theme="light"] .menu-toggle.active span {
+    background: #111;
+}

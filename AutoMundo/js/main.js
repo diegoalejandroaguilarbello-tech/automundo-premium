@@ -1,3 +1,77 @@
+// ======================================
+// MODO CLARO Y OSCURO
+// ======================================
+
+const THEME_STORAGE_KEY = "automundo_theme";
+
+function readSavedTheme() {
+    try {
+        return localStorage.getItem(THEME_STORAGE_KEY);
+    } catch {
+        return null;
+    }
+}
+
+function saveTheme(theme) {
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch {
+        // La página seguirá funcionando aunque localStorage esté bloqueado.
+    }
+}
+
+let currentTheme = readSavedTheme() === "light" ? "light" : "dark";
+let themeToggleButton = null;
+
+function applyTheme(theme, persist = false) {
+    currentTheme = theme;
+
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.style.colorScheme = theme;
+
+    if (persist) {
+        saveTheme(theme);
+    }
+
+    if (themeToggleButton) {
+        const nextThemeName = theme === "dark" ? "claro" : "oscuro";
+
+        themeToggleButton.setAttribute(
+            "aria-label",
+            `Activar modo ${nextThemeName}`
+        );
+
+        themeToggleButton.setAttribute(
+            "title",
+            `Activar modo ${nextThemeName}`
+        );
+    }
+}
+
+applyTheme(currentTheme);
+
+const themeNavbar = document.querySelector(".navbar");
+const mobileMenuButton = document.querySelector(".menu-toggle");
+
+if (themeNavbar && mobileMenuButton) {
+    themeToggleButton = document.createElement("button");
+    themeToggleButton.type = "button";
+    themeToggleButton.className = "theme-toggle";
+
+    themeToggleButton.innerHTML = `
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+    `;
+
+    themeNavbar.insertBefore(themeToggleButton, mobileMenuButton);
+
+    themeToggleButton.addEventListener("click", () => {
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme, true);
+    });
+
+    applyTheme(currentTheme);
+}
+
 const counters =
 document.querySelectorAll(".counter");
 

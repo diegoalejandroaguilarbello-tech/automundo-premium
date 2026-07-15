@@ -25,6 +25,12 @@
     rel="stylesheet"
     href="css/contacto.css">    
 
+  <script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer>
+</script>
+
 </head>
 
 <body>
@@ -214,26 +220,145 @@
     <div class="container">
 
       <h2>Envíanos un mensaje</h2>
+          
+       <form class="contact-form" id="contactForm">
 
-      <form class="contact-form" id="contactForm">
+  <div class="form-field">
+    <label for="contactName" class="form-label">
+      Nombre completo
+    </label>
 
-        <label for="contactName" class="sr-only">Nombre completo</label>
-        <input type="text" id="contactName" name="fullName" placeholder="Nombre completo" required>
-        
-        <label for="contactEmail" class="sr-only">Correo electrónico</label>
-        <input type="email" id="contactEmail" name="email" placeholder="Correo electrónico" required>
-        
-        <label for="contactPhone" class="sr-only">Teléfono</label>
-        <input type="tel" id="contactPhone" name="phone" placeholder="Teléfono">
-        
-        <label for="contactMessage" class="sr-only">Escribe tu mensaje...</label>
-        <textarea id="contactMessage" name="message" placeholder="Escribe tu mensaje..." rows="5"></textarea>
+    <input
+      type="text"
+      id="contactName"
+      name="fullName"
+      placeholder="Ejemplo: Diego Aguilar"
+      autocomplete="name"
+      minlength="2"
+      maxlength="100"
+      aria-describedby="contactNameError"
+      required>
 
-        <button type="submit">Enviar mensaje</button>
-        <p id="contactFormStatus" aria-live="polite"></p>
+    <small
+      class="field-error"
+      id="contactNameError"
+      aria-live="polite">
+    </small>
+  </div>
 
-      </form>
+  <div class="form-field">
+    <label for="contactEmail" class="form-label">
+      Correo electrónico
+    </label>
 
+    <input
+      type="email"
+      id="contactEmail"
+      name="email"
+      placeholder="nombre@correo.com"
+      autocomplete="email"
+      inputmode="email"
+      maxlength="180"
+      autocapitalize="none"
+      spellcheck="false"
+      aria-describedby="contactEmailError"
+      required>
+
+    <small
+      class="field-error"
+      id="contactEmailError"
+      aria-live="polite">
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="contactPhone" class="form-label">
+      Teléfono <span>(opcional)</span>
+    </label>
+
+    <input
+      type="tel"
+      id="contactPhone"
+      name="phone"
+      placeholder="+58 424 000 0000"
+      autocomplete="tel"
+      inputmode="tel"
+      minlength="7"
+      maxlength="20"
+      pattern="[-+0-9() .]{7,20}"
+      aria-describedby="contactPhoneError">
+
+    <small
+      class="field-error"
+      id="contactPhoneError"
+      aria-live="polite">
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="contactMessage" class="form-label">
+      Mensaje
+    </label>
+
+    <textarea
+      id="contactMessage"
+      name="message"
+      placeholder="Cuéntanos en qué vehículo o servicio estás interesado."
+      rows="5"
+      minlength="10"
+      maxlength="1000"
+      aria-describedby="contactMessageError"
+      required></textarea>
+
+    <small
+      class="field-error"
+      id="contactMessageError"
+      aria-live="polite">
+    </small>
+  </div>
+    
+  <div class="form-honeypot" aria-hidden="true">
+  <label for="contactWebsite">
+    Deja este campo vacío
+  </label>
+
+  <input
+    type="text"
+    id="contactWebsite"
+    name="website"
+    tabindex="-1"
+    autocomplete="off">
+</div>
+
+
+<div class="turnstile-field">
+  <div
+    class="cf-turnstile"
+    data-sitekey=0x4AAAAAAD2ndsxRAKLKUCkAFj41YMBijO4
+    data-theme="auto"
+    data-size="flexible"
+    data-language="es">
+  </div>
+
+  <small
+    id="turnstileError"
+    class="field-error"
+    aria-live="polite">
+  </small>
+</div>
+
+  <button type="submit" id="contactSubmitButton">
+    Enviar mensaje
+  </button>
+
+  <p
+    id="contactFormStatus"
+    role="status"
+    aria-live="polite">
+  </p>
+
+</form>
+      
     </div>
 
   </section>

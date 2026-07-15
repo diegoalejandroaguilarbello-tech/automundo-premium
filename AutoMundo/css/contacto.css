@@ -112,3 +112,133 @@
     font-size: 2.2rem;
   }
 }
+/* ==========================================================
+   VALIDACIÓN DEL FORMULARIO
+========================================================== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  margin: 0;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-label span {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+}
+
+.field-error {
+  min-height: 18px;
+  color: #ff8a8a;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.contact-form input.is-invalid,
+.contact-form textarea.is-invalid {
+  border-color: #e5484d;
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.12);
+}
+
+.contact-form input.is-valid,
+.contact-form textarea.is-valid {
+  border-color: #2e9d63;
+}
+
+#contactFormStatus {
+  min-height: 24px;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#contactFormStatus.status-success {
+  color: #47b978;
+}
+
+#contactFormStatus.status-error {
+  color: #ff8a8a;
+}
+
+#contactFormStatus.status-loading {
+  color: var(--primary);
+}
+
+#contactSubmitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+html[data-theme="light"] .field-error,
+html[data-theme="light"] #contactFormStatus.status-error {
+  color: #b42318;
+}
+
+html[data-theme="light"] #contactFormStatus.status-success {
+  color: #147a42;
+}
+
+html[data-theme="light"] .contact-form input.is-invalid,
+html[data-theme="light"] .contact-form textarea.is-invalid {
+  border-color: #b42318;
+}
+
+html[data-theme="light"] .contact-form input.is-valid,
+html[data-theme="light"] .contact-form textarea.is-valid {
+  border-color: #147a42;
+}
+/* ==========================================================
+   HONEYPOT ANTIBOTS
+========================================================== */
+
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+  clip-path: inset(50%) !important;
+}
+/* =========================
+   CLOUDFLARE TURNSTILE
+========================= */
+
+.turnstile-field {
+  width: 100%;
+  margin: 4px 0 8px;
+}
+
+.turnstile-field .cf-turnstile {
+  width: 100%;
+  min-height: 65px;
+}

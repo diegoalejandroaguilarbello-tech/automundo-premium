@@ -944,3 +944,76 @@
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================================
+   BUSCADOR DEL INVENTARIO
+========================================================== */
+
+.filtros-box {
+    grid-template-columns: minmax(280px, 2fr) repeat(4, minmax(0, 1fr));
+}
+
+.busqueda-inventario {
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+}
+
+.busqueda-inventario input {
+    flex: 1;
+    min-width: 0;
+}
+
+#btnBuscarVehiculo {
+    flex-shrink: 0;
+    padding: 16px 24px;
+    border: 1px solid var(--primary);
+    border-radius: 14px;
+    background: var(--primary);
+    color: #111;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#btnBuscarVehiculo:hover,
+#btnBuscarVehiculo:focus-visible {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.28);
+}
+
+#btnBuscarVehiculo:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 992px) {
+    .filtros-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .busqueda-inventario {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .filtros-box {
+        grid-template-columns: 1fr;
+    }
+
+    .busqueda-inventario {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .busqueda-inventario {
+        flex-direction: column;
+    }
+
+    #btnBuscarVehiculo {
+        width: 100%;
+    }
+}
