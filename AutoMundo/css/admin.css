@@ -4,9 +4,11 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0b0f19;
-  color: #ffffff;
+  font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(208, 170, 98, 0.09), transparent 30rem),
+    #0b0e13;
+  color: #f6f3ec;
 }
 
 .admin-page {
@@ -20,21 +22,30 @@ body {
 .login-card {
   width: 100%;
   max-width: 420px;
-  background: #111827;
+  background: #141922;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+  border-radius: 24px;
   padding: 36px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
 .brand {
   margin-bottom: 28px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.brand img {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
 }
 
 .brand h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 27px;
   letter-spacing: -1px;
 }
 
@@ -65,7 +76,8 @@ body {
 }
 
 .login-form input:focus {
-  border-color: #f59e0b;
+  border-color: #d0aa62;
+  box-shadow: 0 0 0 4px rgba(208, 170, 98, 0.1);
 }
 
 .login-form button,
@@ -74,8 +86,8 @@ body {
   border: none;
   border-radius: 10px;
   padding: 13px 16px;
-  background: #f59e0b;
-  color: #111827;
+  background: #d0aa62;
+  color: #17130b;
   font-weight: 700;
   cursor: pointer;
 }
@@ -105,7 +117,7 @@ body {
 
 .dashboard {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1240px;
 }
 
 .dashboard-header {
@@ -120,6 +132,34 @@ body {
   font-size: 34px;
 }
 
+.dashboard-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dashboard-heading img {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+}
+
+.dashboard-status {
+  margin: -10px 0 26px;
+  padding: 14px 16px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.08);
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+.dashboard-status.success {
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
+  color: #6ee7b7;
+}
+
 .dashboard-header p {
   margin: 8px 0 0;
   color: #9ca3af;
@@ -132,7 +172,7 @@ body {
 }
 
 .dashboard-card {
-  background: #111827;
+  background: #141922;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 24px;
@@ -159,7 +199,7 @@ body {
 }
 .vehicles-admin-section {
   margin-top: 32px;
-  background: #111827;
+  background: #141922;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 24px;
@@ -194,7 +234,7 @@ body {
 }
 
 .secondary-btn:hover {
-  border-color: #f59e0b;
+  border-color: #d0aa62;
 }
 
 .table-wrapper {
@@ -217,7 +257,7 @@ body {
 }
 
 .admin-table th {
-  color: #f59e0b;
+  color: #d0aa62;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -284,7 +324,7 @@ body {
 }
 .vehicle-form-section {
   margin-top: 32px;
-  background: #111827;
+  background: #141922;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 24px;
@@ -335,7 +375,7 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #f59e0b;
+  border-color: #d0aa62;
 }
 
 .form-group small {
@@ -353,8 +393,8 @@ body {
   border: none;
   border-radius: 10px;
   padding: 12px 16px;
-  background: #f59e0b;
-  color: #111827;
+  background: #d0aa62;
+  color: #17130b;
   font-weight: 700;
   cursor: pointer;
 }
@@ -401,7 +441,7 @@ body {
 }
 
 .mini-btn:hover {
-  border-color: #f59e0b;
+  border-color: #d0aa62;
 }
 
 .mini-btn.danger {

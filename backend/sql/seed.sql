@@ -27,7 +27,6 @@ VALUES (
 )
 ON DUPLICATE KEY UPDATE
   name = VALUES(name),
-  password_hash = VALUES(password_hash),
   role = VALUES(role),
   active = TRUE;
 

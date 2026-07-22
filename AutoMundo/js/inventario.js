@@ -154,65 +154,40 @@ function renderVehicles() {
     elements.container.innerHTML = state.vehicles.map((v) => `
       <article class="card-premium">
         <div class="card-imagen">
-          <div class="card-badge">${v.condition === "new" ? "Nuevo" : "Certificado"}</div>
-          <button class="btn-favorito ${isFavorite(v.id) ? "activo" : ""}" data-id="${v.id}" aria-label="Cambiar favorito">
+          <div class="card-badge">${escapeHtml(getConditionLabel(v.condition))}</div>
+          <button class="btn-favorito ${isFavorite(v.id) ? "activo" : ""}" type="button" data-id="${v.id}" aria-label="${isFavorite(v.id) ? "Quitar de favoritos" : "Agregar a favoritos"}">
             ${isFavorite(v.id) ? "♥" : "♡"}
           </button>
           <img src="${escapeHtml(v.image)}" alt="${escapeHtml(v.name)}" loading="lazy">
         </div>
         <div class="card-content">
-  <h3>${escapeHtml(v.name)}</h3>
+          <p class="card-version">${escapeHtml(v.version || getConditionLabel(v.condition))}</p>
+          <h3>${escapeHtml(v.name)}</h3>
 
-  <p class="card-version">
-    ${escapeHtml(v.version || "Versión no especificada")}
-  </p>
+          <div class="vehicle-specs">
+            <div class="vehicle-spec">
+              <span>Año</span>
+              <strong>${escapeHtml(v.year || "—")}</strong>
+            </div>
+            <div class="vehicle-spec">
+              <span>Tipo</span>
+              <strong>${escapeHtml(v.type || "—")}</strong>
+            </div>
+            <div class="vehicle-spec">
+              <span>Kilometraje</span>
+              <strong>${Number(v.mileage || 0).toLocaleString("es-VE")} km</strong>
+            </div>
+            <div class="vehicle-spec">
+              <span>Transmisión</span>
+              <strong>${escapeHtml(v.transmission || "—")}</strong>
+            </div>
+          </div>
 
-  <div class="vehicle-specs">
-    <div class="vehicle-spec">
-      <span>Año</span>
-      <strong>${escapeHtml(v.year || "No especificado")}</strong>
-    </div>
-
-    <div class="vehicle-spec">
-      <span>Tipo</span>
-      <strong>${escapeHtml(v.type || "No especificado")}</strong>
-    </div>
-
-    <div class="vehicle-spec">
-      <span>Condición</span>
-      <strong>${escapeHtml(getConditionLabel(v.condition))}</strong>
-    </div>
-
-    <div class="vehicle-spec">
-      <span>Kilometraje</span>
-      <strong>
-        ${Number(v.mileage || 0).toLocaleString("es-VE")} km
-      </strong>
-    </div>
-
-    <div class="vehicle-spec">
-      <span>Combustible</span>
-      <strong>${escapeHtml(v.fuel || "No especificado")}</strong>
-    </div>
-
-    <div class="vehicle-spec">
-      <span>Transmisión</span>
-      <strong>${escapeHtml(v.transmission || "No especificada")}</strong>
-    </div>
-  </div>
-
-  <p class="card-description">
-    ${escapeHtml(v.description || "Descripción no disponible.")}
-  </p>
-
-  <div class="precio">
-    $${v.price.toLocaleString("en-US")}
-  </div>
-
-  <button class="btn-detalles" data-id="${v.id}">
-    Ver detalles
-  </button>
-</div>
+          <div class="vehicle-card-footer">
+            <p class="precio"><small>Precio</small>$${v.price.toLocaleString("en-US")}</p>
+            <button class="btn-detalles" type="button" data-id="${v.id}">Ver detalles</button>
+          </div>
+        </div>
       </article>`).join("");
   }
   elements.loadMore.hidden = state.page >= state.totalPages;
@@ -234,13 +209,46 @@ async function loadModels() {
 }
 
 function openModal(vehicle) {
-  elements.modal.style.display = "flex";
-  document.querySelector("#modalImagen").src = vehicle.image;
-  document.querySelector("#modalNombre").textContent = vehicle.name;
-  document.querySelector("#modalMarca").textContent = `Marca: ${vehicle.brand}`;
-  document.querySelector("#modalTipo").textContent = `Tipo: ${vehicle.type}`;
-  document.querySelector("#modalAno").textContent = `Año: ${vehicle.year}`;
-  document.querySelector("#modalPrecio").textContent = `$${vehicle.price.toLocaleString("en-US")}`;
+  if (!vehicle || !elements.modal) return;
+
+  const setText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value;
+  };
+
+  const image = document.querySelector("#modalImagen");
+  if (image) {
+    image.src = vehicle.image;
+    image.alt = vehicle.name;
+  }
+
+  setText("#modalVersion", vehicle.version || getConditionLabel(vehicle.condition));
+  setText("#modalNombre", vehicle.name);
+  setText("#modalMarca", `Marca: ${vehicle.brand || "—"}`);
+  setText("#modalTipo", `Tipo: ${vehicle.type || "—"}`);
+  setText("#modalAno", `Año: ${vehicle.year || "—"}`);
+  setText("#modalCondicion", `Condición: ${getConditionLabel(vehicle.condition)}`);
+  setText("#modalKilometraje", `Kilometraje: ${Number(vehicle.mileage || 0).toLocaleString("es-VE")} km`);
+  setText("#modalCombustible", `Combustible: ${vehicle.fuel || "—"}`);
+  setText("#modalTransmision", `Transmisión: ${vehicle.transmission || "—"}`);
+  setText("#modalDescripcion", vehicle.description || "Consulta con un asesor para conocer todos los detalles de esta unidad.");
+  setText("#modalPrecio", `$${vehicle.price.toLocaleString("en-US")}`);
+
+  const whatsappLink = document.querySelector("#modalWhatsapp");
+  if (whatsappLink) {
+    const message = `Hola, quiero información sobre ${vehicle.name} (${vehicle.year}).`;
+    whatsappLink.href = `https://wa.me/584247245512?text=${encodeURIComponent(message)}`;
+  }
+
+  elements.modal.classList.add("activo");
+  document.body.style.overflow = "hidden";
+  document.querySelector(".cerrar-modal")?.focus();
+}
+
+function closeModal() {
+  if (!elements.modal) return;
+  elements.modal.classList.remove("activo");
+  document.body.style.overflow = "";
 }
 
 elements.searchForm.addEventListener("submit", (event) => {
@@ -263,8 +271,11 @@ elements.container.addEventListener("click", (event) => {
   const detailsButton = event.target.closest(".btn-detalles");
   if (detailsButton) openModal(state.vehicles.find((v) => v.id === Number(detailsButton.dataset.id)));
 });
-document.querySelector(".cerrar-modal").addEventListener("click", () => { elements.modal.style.display = "none"; });
-window.addEventListener("click", (event) => { if (event.target === elements.modal) elements.modal.style.display = "none"; });
+document.querySelector(".cerrar-modal")?.addEventListener("click", closeModal);
+window.addEventListener("click", (event) => { if (event.target === elements.modal) closeModal(); });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && elements.modal?.classList.contains("activo")) closeModal();
+});
 
 async function initializeInventory() {
   await Promise.all([syncFavorites(), loadBrands()]);

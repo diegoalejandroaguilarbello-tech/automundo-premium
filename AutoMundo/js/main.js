@@ -169,8 +169,10 @@ document.querySelectorAll(".nav-links a").forEach(link => {
     const href = link.getAttribute("href");
     if (href === paginaActual) {
         link.classList.add("active");
+        link.setAttribute("aria-current", "page");
     } else {
         link.classList.remove("active");
+        link.removeAttribute("aria-current");
     }
 });
 
@@ -302,6 +304,8 @@ if (botones.length > 0 && modal) {
             modalAnio.textContent = vehiculo.año;
             modalPrecio.textContent = vehiculo.precio.toLocaleString("es-ES");
             modal.classList.add("activo");
+            document.body.style.overflow = "hidden";
+            cerrar?.focus();
         });
     });
 }
@@ -310,20 +314,23 @@ if (botones.length > 0 && modal) {
 =            CERRAR MODAL
 =========================================*/
 
-if (cerrar && modal) {
+if (cerrar && modal && botones.length > 0) {
     cerrar.addEventListener("click", () => {
         modal.classList.remove("activo");
+        document.body.style.overflow = "";
     });
 
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.classList.remove("activo");
+            document.body.style.overflow = "";
         }
     });
 
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
             modal.classList.remove("activo");
+            document.body.style.overflow = "";
         }
     });
 }
@@ -334,6 +341,7 @@ if (cerrar && modal) {
 // =========================
 
 const newsletterForm = document.querySelector("#newsletterForm");
+const newsletterStatus = document.querySelector("#newsletterStatus");
 
 if (newsletterForm) {
     newsletterForm.addEventListener("submit", async (event) => {
@@ -344,17 +352,30 @@ if (newsletterForm) {
 
         if (!email) return;
 
+        if (newsletterStatus) {
+            newsletterStatus.textContent = "Registrando suscripción...";
+        }
+
         try {
-            await fetch(`${API_BASE_URL}/newsletter`, {
+            const response = await fetch(`${API_BASE_URL}/newsletter`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
             });
 
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(data.message || "No se pudo registrar la suscripción.");
+            }
+
             newsletterForm.reset();
-            alert("Suscripción registrada correctamente.");
+            if (newsletterStatus) {
+                newsletterStatus.textContent = "Suscripción registrada correctamente.";
+            }
         } catch (error) {
-            alert("No se pudo registrar la suscripción. Revisa que el backend esté activo.");
+            if (newsletterStatus) {
+                newsletterStatus.textContent = error.message || "No se pudo registrar la suscripción.";
+            }
             console.error(error);
         }
     });

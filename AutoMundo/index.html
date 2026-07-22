@@ -1,1125 +1,354 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-<title>AutoMundo Premium</title>
-
-<meta
-    name="description"
-    content="Concesionario premium de vehículos de lujo">
-
-<link
-    rel="stylesheet"
-    href="css/style.css">
-
-<link
-    rel="stylesheet"
-    href="css/navbar.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora vehículos premium seleccionados, financiamiento flexible y asesoría personalizada en AutoMundo Premium.">
+  <meta name="theme-color" content="#0b0e13">
+  <title>AutoMundo Premium | Vehículos seleccionados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body>
+<body class="page-home">
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="logo" href="index.html" aria-label="AutoMundo Premium, inicio">
+        <img class="logo-mark" src="img/logo-mark.svg" alt="" width="44" height="44">
+        <span class="logo-text">
+          <strong class="logo-name">AutoMundo</strong>
+          <span>Premium</span>
+        </span>
+      </a>
 
-<!-- ========================= -->
-<!-- NAVBAR GLOBAL -->
-<!-- ========================= -->
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="inventario.html">Inventario</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="financiamiento.html">Financiamiento</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
 
-<header>
-
-<nav class="navbar">
-
-    <div class="logo">
-
-        <img
-            src="img/logo.png"
-            alt="AutoMundo Premium">
-
-        <div class="logo-text">
-
-            <h1>AutoMundo</h1>
-
-            <span>PREMIUM</span>
-
-        </div>
-
-    </div>
-
-    <ul class="nav-links">
-
-        <li>
-
-            <a href="index.html">
-
-                Inicio
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="inventario.html">
-
-                Inventario
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="servicios.html">
-
-                Servicios
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="financiamiento.html">
-
-                Financiamiento
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="nosotros.html">
-
-                Nosotros
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="contacto.html">
-
-                Contacto
-
-            </a>
-
-        </li>
-
-    </ul>
-
-    <div class="navbar-actions">
-
+      <div class="navbar-actions">
         <a
-
-            href="https://wa.me/584247245512"
-
-            target="_blank"
-
-            class="btn-whatsapp">
-
-            WhatsApp
-
+          class="btn-whatsapp"
+          href="https://wa.me/584247245512?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20veh%C3%ADculo%20de%20AutoMundo%20Premium."
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hablar con un asesor por WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 8.5c.4 2.6 1.9 4.1 4.5 4.9l1.2-1 1.8.9c.2.1.3.3.2.6-.3 1.2-1.3 1.8-2.5 1.6-4.3-.8-6.8-3.4-7.6-7.6-.2-1.2.5-2.2 1.6-2.5.3-.1.5 0 .6.2l.9 1.8L9 8.5Z" fill="currentColor"/>
+          </svg>
+          <span>Hablar con asesor</span>
         </a>
+      </div>
 
-    </div>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-    </button>
-
-</nav>
-
-</header>
-<main id="contenido-principal">
-<!-- ========================= -->
-<!-- HERO -->
-<!-- ========================= -->
-
-<section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-sports-car-driving-on-a-road-41662-large.mp4" type="video/mp4">
-    </video>
-
-    <div class="container hero-grid">
-
+  <main id="contenido-principal">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
         <div class="hero-content">
+          <span class="hero-tag">Colección seleccionada 2026</span>
+          <h1 id="hero-title">Conduce algo <span>extraordinario.</span></h1>
+          <p>
+            Vehículos nuevos y certificados, elegidos por su diseño, desempeño y confiabilidad. Te acompañamos desde la primera búsqueda hasta la entrega.
+          </p>
 
-            <span class="hero-tag">
-                Colección Premium 2026
-            </span>
+          <div class="hero-buttons">
+            <a href="inventario.html" class="btn">Explorar inventario</a>
+            <a href="contacto.html" class="btn-outline">Hablar con un asesor</a>
+          </div>
 
-            <h1>
-                Conduce la excelencia
-            </h1>
-
-            <p>
-
-                Descubre una selección exclusiva
-                de vehículos diseñados para quienes
-                buscan lujo, tecnología y rendimiento.
-
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="inventario.html" class="btn">
-
-                    Ver Inventario
-
-                </a>
-
-                <a href="contacto.html" class="btn-outline">
-
-                    Contactar
-
-                </a>
-
-            </div>
-
+          <ul class="hero-proof" aria-label="Beneficios principales">
+            <li>Inspección certificada</li>
+            <li>Financiamiento flexible</li>
+            <li>Acompañamiento completo</li>
+          </ul>
         </div>
 
-        <div class="hero-image">
-
-            <img
-                src="img/hero-car.png"
-                alt="Vehículo Premium">
-
+        <div class="hero-visual">
+          <span class="hero-index">Selección 01</span>
+          <div class="hero-car-stage">
+            <img src="img/hero-car.png" alt="BMW M3 blanco" width="640" height="512" fetchpriority="high">
+          </div>
+          <div class="hero-spec-card">
+            <span>Vehículo destacado</span>
+            <strong>BMW M3 Competition</strong>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-<!-- ========================= -->
-<!-- MARCAS -->
-<!-- ========================= -->
-
-<section class="reveal"> 
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            Marcas Disponibles
-
-        </h2>
-
+    <section class="brand-strip" aria-label="Marcas disponibles">
+      <div class="container brand-strip-inner">
+        <p>Marcas seleccionadas</p>
         <div class="marcas-grid">
-
-            <div class="marca">
-                BMW
-            </div>
-
-            <div class="marca">
-                Mercedes
-            </div>
-
-            <div class="marca">
-                Audi
-            </div>
-
-            <div class="marca">
-                Toyota
-            </div>
-
-            <div class="marca">
-                Ford
-            </div>
-
+          <span class="marca">BMW</span>
+          <span class="marca">Mercedes-Benz</span>
+          <span class="marca">Audi</span>
+          <span class="marca">Toyota</span>
+          <span class="marca">Ford</span>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-<!-- ========================= -->
-<!-- VEHÍCULOS DESTACADOS -->
-<!-- ========================= -->
-
-<section class="reveal">
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-            Vehículos Destacados
-        </h2>
+    <section class="featured-vehicles reveal" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-copy">
+            <span class="eyebrow">Selección AutoMundo</span>
+            <h2 class="titulo-seccion" id="featured-title">Vehículos destacados</h2>
+            <p>Una muestra de nuestro inventario disponible, con información clara para ayudarte a comparar mejor.</p>
+          </div>
+          <a class="text-link" href="inventario.html">Ver inventario completo <span aria-hidden="true">→</span></a>
+        </div>
 
         <div class="vehiculos-grid">
+          <article class="card vehicle-card">
+            <div class="card-img">
+              <span class="vehicle-status">Nuevo</span>
+              <img src="img/bmw-x5.jpg" alt="BMW X5 2025" width="512" height="512" loading="lazy">
+            </div>
+            <div class="card-content">
+              <p class="card-kicker">BMW · SUV</p>
+              <h3>BMW X5 xDrive40i</h3>
+              <div class="card-meta">
+                <span>2025</span><span>Automática</span><span>Gasolina</span>
+              </div>
+              <div class="vehicle-card-footer">
+                <p class="precio"><small>Desde</small>$65.000</p>
+                <button class="btn-modal" type="button" data-id="1">Ver detalles</button>
+              </div>
+            </div>
+          </article>
 
-            <!-- BMW -->
-            <article class="card">
+          <article class="card vehicle-card">
+            <div class="card-img">
+              <span class="vehicle-status">Nuevo</span>
+              <img src="img/audi-q8.jpg" alt="Audi Q8 2025" width="512" height="512" loading="lazy">
+            </div>
+            <div class="card-content">
+              <p class="card-kicker">Audi · SUV Coupé</p>
+              <h3>Audi Q8 Premium Plus</h3>
+              <div class="card-meta">
+                <span>2025</span><span>Automática</span><span>Gasolina</span>
+              </div>
+              <div class="vehicle-card-footer">
+                <p class="precio"><small>Desde</small>$72.000</p>
+                <button class="btn-modal" type="button" data-id="2">Ver detalles</button>
+              </div>
+            </div>
+          </article>
 
-                <div class="card-img">
-                    <img src="img/bmw-x5.jpg" alt="BMW X5">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>BMW X5 2025</h3>
-
-                    <p>
-                        SUV premium con tecnología avanzada y máximo confort.
-                    </p>
-
-                    <div class="precio">
-                        $65.000
-                    </div>
-
-                    <button
-                        class="btn btn-modal"
-                        data-id="1">
-                        Ver Más
-                    </button>
-
-                </div>
-
-            </article>
-
-            <!-- AUDI -->
-
-            <article class="card">
-
-                <div class="card-img">
-                    <img src="img/audi-q8.jpg" alt="Audi Q8">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Audi Q8</h3>
-
-                    <p>
-                        Diseño deportivo y lujo para cada trayecto.
-                    </p>
-
-                    <div class="precio">
-                        $72.000
-                    </div>
-
-                    <button
-                        class="btn btn-modal"
-                        data-id="2">
-                        Ver Más
-                    </button>
-
-                </div>
-
-            </article>
-
-            <!-- MERCEDES -->
-
-            <article class="card">
-
-                <div class="card-img">
-                    <img src="img/mercedes-gle.jpg" alt="Mercedes GLE">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Mercedes GLE</h3>
-
-                    <p>
-                        Potencia, elegancia y tecnología alemana.
-                    </p>
-
-                    <div class="precio">
-                        $78.000
-                    </div>
-
-                    <button
-                        class="btn btn-modal"
-                        data-id="3">
-                        Ver Más
-                    </button>
-
-                </div>
-
-            </article>
-
+          <article class="card vehicle-card">
+            <div class="card-img">
+              <span class="vehicle-status">Nuevo</span>
+              <img src="img/mercedes-gle.jpg" alt="Mercedes-Benz GLE 2025" width="512" height="512" loading="lazy">
+            </div>
+            <div class="card-content">
+              <p class="card-kicker">Mercedes-Benz · SUV</p>
+              <h3>GLE 450 4MATIC</h3>
+              <div class="card-meta">
+                <span>2025</span><span>Automática</span><span>Gasolina</span>
+              </div>
+              <div class="vehicle-card-footer">
+                <p class="precio"><small>Desde</small>$78.000</p>
+                <button class="btn-modal" type="button" data-id="3">Ver detalles</button>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-<!-- ========================= -->
-<!-- MODAL -->
-<!-- ========================= -->
-
-<div class="modal" id="modalVehiculo">
-
-    <div class="modal-contenido">
-
-        <span class="cerrar-modal">&times;</span>
-
+    <div class="modal" id="modalVehiculo" role="dialog" aria-modal="true" aria-labelledby="modalNombre">
+      <div class="modal-contenido">
+        <button class="cerrar-modal" type="button" aria-label="Cerrar detalles">×</button>
         <div class="modal-grid">
-
-            <div class="modal-imagen">
-
-                <img
-                    id="modalImagen"
-                    src=""
-                    alt="Vehículo">
-
+          <div class="modal-imagen">
+            <img id="modalImagen" src="img/hero-car.png" alt="Vehículo seleccionado">
+          </div>
+          <div class="modal-info">
+            <h2 id="modalNombre">Detalles del vehículo</h2>
+            <div class="modal-datos">
+              <p><strong>Marca:</strong> <span id="modalMarca"></span></p>
+              <p><strong>Tipo:</strong> <span id="modalTipo"></span></p>
+              <p><strong>Año:</strong> <span id="modalAnio"></span></p>
+              <p class="modal-precio"><strong>Precio:</strong> $<span id="modalPrecio"></span></p>
             </div>
-
-            <div class="modal-info">
-
-                <h2 id="modalNombre"></h2>
-
-                <div class="modal-datos">
-
-                    <p>
-                        <strong>Marca:</strong>
-                        <span id="modalMarca"></span>
-                    </p>
-
-                    <p>
-                        <strong>Tipo:</strong>
-                        <span id="modalTipo"></span>
-                    </p>
-
-                    <p>
-                        <strong>Año:</strong>
-                        <span id="modalAnio"></span>
-                    </p>
-
-                    <p class="modal-precio">
-                        $
-                        <span id="modalPrecio"></span>
-                    </p>
-
-                </div>
-
-                <a
-                    href="https://wa.me/584247245512"
-                    target="_blank"
-                    class="btn-whatsapp">
-
-                    Solicitar Información
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- EXPERIENCIA PREMIUM -->
-<!-- ========================= -->
-
-<section class="reveal experiencia">
-
-    <div class="container">
-
-        <div class="experiencia-grid">
-
-            <div class="experiencia-imagen">
-
-                <img
-                    src="img/showroom.jpg"
-                    alt="Showroom Premium">
-
-            </div>
-
-            <div class="experiencia-content">
-
-                <span class="experiencia-tag">
-
-                    EXPERIENCIA PREMIUM
-
-                </span>
-
-                <h2>
-
-                    Mucho más que un concesionario
-
-                </h2>
-
-                <p>
-
-                    En AutoMundo Premium no solo vendemos vehículos.
-                    Ofrecemos una experiencia exclusiva donde cada
-                    detalle está diseñado para brindar confianza,
-                    comodidad y excelencia.
-
-                </p>
-
-                <p>
-
-                    Nuestro equipo de especialistas te acompaña
-                    durante todo el proceso para ayudarte a encontrar
-                    el vehículo perfecto.
-
-                </p>
-
-                <a href="nosotros.html" class="btn">
-
-                    Conocer Más
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-<!-- ========================= -->
-<!-- POR QUE ELEGIRNOS -->
-<!-- ========================= -->
-
-<section class="porque reveal">
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            ¿Por qué elegir AutoMundo?
-
-        </h2>
-
-        <div class="porque-grid">
-
-            <div class="porque-card">
-
-                <div class="porque-icon">
-                    🚗
-                </div>
-
-                <h3>
-                    Vehículos Certificados
-                </h3>
-
-                <p>
-                    Todos nuestros vehículos pasan por estrictos controles de calidad.
-                </p>
-
-            </div>
-
-            <div class="porque-card">
-
-                <div class="porque-icon">
-                    💰
-                </div>
-
-                <h3>
-                    Financiamiento Flexible
-                </h3>
-
-                <p>
-                    Planes adaptados a cada necesidad y presupuesto.
-                </p>
-
-            </div>
-
-            <div class="porque-card">
-
-                <div class="porque-icon">
-                    🛡️
-                </div>
-
-                <h3>
-                    Garantía Premium
-                </h3>
-
-                <p>
-                    Protección y respaldo para tu inversión.
-                </p>
-
-            </div>
-
-            <div class="porque-card">
-
-                <div class="porque-icon">
-                    ⭐
-                </div>
-
-                <h3>
-                    Atención Personalizada
-                </h3>
-
-                <p>
-                    Te acompañamos desde la elección hasta la entrega.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-
-<!-- ========================= -->
-<!-- ESTADISTICAS -->
-<!-- ========================= -->
-
-<section class="reveal">
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            Nuestra Trayectoria
-
-        </h2>
-
-        <div class="stats">
-
-            <div class="stat">
-
-                <h3 class="counter" data-target="500">0</h3>
-
-                <p>
-                    Vehículos vendidos
-                </p>
-
-            </div>
-
-            <div class="stat">
-
-                <h3 class="counter" data-target="12">0</h3>
-
-                <p>
-                    Años de experiencia
-                </p>
-
-            </div>
-
-            <div class="stat">
-
-                <h3 class="counter" data-target="98">0</h3>
-                
-               <p>
-
-                Clientes satisfechos (%)
-
-               </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-<!-- ========================= -->
-<!-- SERVICIOS -->
-<!-- ========================= -->
-
-<section class="reveal">   
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            Nuestros Servicios
-
-        </h2>
-
-        <div class="services">
-
-            <div class="service">
-
-                <h3>
-
-                    Financiamiento
-
-                </h3>
-
-                <p>
-
-                    Planes adaptados a cada cliente.
-
-                </p>
-
-            </div>
-
-            <div class="service">
-
-                <h3>
-
-                    Garantía
-
-                </h3>
-
-                <p>
-
-                    Vehículos certificados y revisados.
-
-                </p>
-
-            </div>
-
-            <div class="service">
-
-                <h3>
-
-                    Mantenimiento
-
-                </h3>
-
-                <p>
-
-                    Servicio técnico especializado.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-
-
-<!-- ========================= -->
-<!-- CTA -->
-<!-- ========================= -->
-
-<section class="reveal">
-
-    <div class="container">
-
-        <div
-            style="
-            text-align:center">
-
-            <h2
-                class="titulo-seccion">
-
-                Financia tu próximo vehículo
-
-            </h2>
-
-            <p>
-
-                Cuotas flexibles y aprobación rápida.
-
-            </p>
-
-            <br>
-
             <a
-                href="financiamiento.html"
-                class="btn">
-
-                Ver Opciones
-
+              class="btn-whatsapp"
+              href="https://wa.me/584247245512?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20veh%C3%ADculo%20de%20AutoMundo%20Premium."
+              target="_blank"
+              rel="noopener noreferrer">
+              Solicitar información
             </a>
-
+          </div>
         </div>
-
+      </div>
     </div>
 
-</section>
+    <section class="reveal" aria-labelledby="experience-title">
+      <div class="container experience-panel">
+        <div class="experience-media">
+          <img src="img/showroom.jpg" alt="Showroom de AutoMundo Premium" width="512" height="512" loading="lazy">
+        </div>
+        <div class="experience-content">
+          <span class="eyebrow">Experiencia AutoMundo</span>
+          <h2 id="experience-title">Una compra clara, cuidada y sin fricciones.</h2>
+          <p>Seleccionamos unidades confiables y presentamos sus datos de forma transparente para que tomes una decisión bien informada.</p>
+          <ul class="check-list">
+            <li>Revisión técnica antes de publicar</li>
+            <li>Asesoría ajustada a tu presupuesto</li>
+            <li>Seguimiento hasta la entrega</li>
+          </ul>
+          <a href="nosotros.html" class="text-link">Conocer nuestra propuesta <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
 
-<section class="newsletter reveal">
+    <section class="reveal" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-copy">
+            <span class="eyebrow">Confianza en cada etapa</span>
+            <h2 class="titulo-seccion" id="benefits-title">Lo importante, bien resuelto.</h2>
+          </div>
+        </div>
 
+        <div class="value-grid">
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="m7 12 3 3 7-7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3 5 6v5c0 4.6 2.9 8.5 7 10 4.1-1.5 7-5.4 7-10V6l-7-3Z" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Inventario verificado</h3>
+            <p>Información técnica, condición y precio organizados para comparar con confianza.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5h16v10H4z" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 7.5V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.5M8 12h8" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Financiamiento flexible</h3>
+            <p>Simula escenarios y solicita una evaluación con un proceso sencillo y transparente.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5a8 8 0 1 1 16 0v5a2 2 0 0 1-2 2h-2.5" stroke-width="1.8" stroke-linecap="round"/><path d="M4 12h3v5H5a1 1 0 0 1-1-1v-4Zm16 0h-3v5h2a1 1 0 0 0 1-1v-4ZM12 19h3.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Atención personalizada</h3>
+            <p>Un asesor te acompaña para resolver dudas y avanzar con seguridad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal" aria-label="Cifras de AutoMundo">
+      <div class="container stats-strip">
+        <div class="stat"><h3><span class="counter" data-target="500">0</span>+</h3><p>Vehículos entregados</p></div>
+        <div class="stat"><h3><span class="counter" data-target="12">0</span>+</h3><p>Años de experiencia</p></div>
+        <div class="stat"><h3><span class="counter" data-target="98">0</span>%</h3><p>Clientes satisfechos</p></div>
+        <div class="stat"><h3>24 h</h3><p>Respuesta comercial</p></div>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="finance-title">
+      <div class="container finance-banner">
+        <div class="finance-banner-content">
+          <span class="eyebrow">Planifica tu compra</span>
+          <h2 id="finance-title">Calcula una cuota antes de decidir.</h2>
+          <p>Prueba diferentes precios, iniciales y plazos en nuestro simulador de financiamiento.</p>
+        </div>
+        <a href="financiamiento.html" class="btn">Abrir simulador</a>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="testimonial-title">
+      <div class="container testimonial-feature">
+        <div class="testimonial-intro">
+          <span class="eyebrow">Opinión de clientes</span>
+          <strong>4,9</strong>
+          <p>Valoración promedio de la experiencia de compra.</p>
+        </div>
+        <div class="testimonial-quote">
+          <blockquote id="testimonial-title">“La información fue clara desde el inicio. Pude comparar opciones, simular el financiamiento y recibir orientación sin perder tiempo.”</blockquote>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">CM</span>
+            <span><strong>Carolina Méndez</strong><span>Cliente AutoMundo</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter reveal" aria-labelledby="newsletter-title">
+      <div class="container newsletter-box">
+        <div>
+          <span class="eyebrow">Novedades del inventario</span>
+          <h2 id="newsletter-title">Recibe nuevas unidades en tu correo.</h2>
+          <p>Te avisamos cuando ingresen vehículos relevantes. Sin mensajes innecesarios.</p>
+        </div>
+        <div>
+          <form class="newsletter-form" id="newsletterForm">
+            <label for="newsletterEmail" class="sr-only">Correo electrónico</label>
+            <input id="newsletterEmail" type="email" name="email" placeholder="nombre@correo.com" autocomplete="email" required>
+            <button type="submit">Suscribirme</button>
+          </form>
+          <small id="newsletterStatus" aria-live="polite"></small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="container">
-
-        <div class="newsletter-box">
-
-            <h2>
-
-                Mantente informado
-
-            </h2>
-
-            <p>
-
-                Recibe novedades, ofertas y
-                nuevos vehículos disponibles.
-
-            </p>
-
-            <form id="newsletterForm">
-                <label for="newsletterEmail" class="sr-only">Correo electrónico para suscripción</label>
-                <input
-                    type="email"
-                    id="newsletterEmail"
-                    name="email"
-                    placeholder="Tu correo electrónico">
-
-                <button class="btn">
-
-                    Suscribirse
-
-                </button>
-
-            </form>
-
+      <div class="footer-content">
+        <div class="footer-box">
+          <h3>AutoMundo Premium</h3>
+          <p>Vehículos seleccionados, información clara y acompañamiento profesional.</p>
         </div>
-
+        <div class="footer-box">
+          <h3>Explorar</h3>
+          <ul>
+            <li><a href="inventario.html">Inventario</a></li>
+            <li><a href="financiamiento.html">Financiamiento</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+        <div class="footer-box">
+          <h3>Servicios</h3>
+          <ul>
+            <li><a href="servicios.html">Venta y asesoría</a></li>
+            <li><a href="servicios.html">Garantía y mantenimiento</a></li>
+            <li><a href="contacto.html">Prueba de manejo</a></li>
+          </ul>
+        </div>
+        <div class="footer-box">
+          <h3>Contacto</h3>
+          <p><a href="tel:+584247245512">+58&nbsp;424&nbsp;724&nbsp;5512</a></p>
+          <p><a href="mailto:contacto@automundo.com">contacto@automundo.com</a></p>
+          <p>Venezuela</p>
+        </div>
+      </div>
+      <div class="footer-line"></div>
+      <div class="footer-bottom">
+        <p>© 2026 AutoMundo Premium. Todos los derechos reservados.</p>
+        <p>Compra informada. Atención personalizada.</p>
+      </div>
     </div>
+  </footer>
 
-</section>
-
-<!-- ========================= -->
-<!-- CALCULADORA FINANCIERA -->
-<!-- ========================= -->
-
-<section class="financiamiento-calculadora reveal">
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            Calcula tu financiamiento
-
-        </h2>
-
-        <p class="subtitulo">
-
-            Simula el pago mensual de tu próximo vehículo.
-
-        </p>
-
-        <div class="calculadora-box">
-
-            <div class="campo">
-
-                <label for="precioVehiculo">
-
-                    Precio del vehículo ($)
-
-                </label>
-
-                <input
-                    type="number"
-                    id="precioVehiculo"
-                    placeholder="Ej: 35000">
-
-            </div>
-
-            <div class="campo">
-
-                <label for="inicialVehiculo">
-
-                    Inicial ($)
-
-                </label>
-
-                <input
-                    type="number"
-                    id="inicialVehiculo"
-                    placeholder="Ej: 5000">
-
-            </div>
-
-            <div class="campo">
-
-                <label for="cuotas">
-
-                    Número de cuotas
-
-                </label>
-
-                <select id="cuotas">
-
-                    <option value="12">12 meses</option>
-
-                    <option value="24">24 meses</option>
-
-                    <option value="36">36 meses</option>
-
-                    <option value="48">48 meses</option>
-
-                    <option value="60">60 meses</option>
-
-                </select>
-
-            </div>
-
-            <button
-                id="btnCalcular"
-                class="btn-calcular">
-
-                Calcular
-
-            </button>
-
-            <div class="resultado">
-
-                <h3>
-
-                    Pago mensual estimado
-
-                </h3>
-
-                <div id="resultadoPago">
-
-                    $0
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-<!-- ========================= -->
-<!-- TESTIMONIOS -->
-<!-- ========================= -->
-
-<section class="testimonios reveal">
-
-    <div class="container">
-
-        <h2 class="titulo-seccion">
-
-            Lo que dicen nuestros clientes
-
-        </h2>
-
-        <div class="testimonios-grid">
-
-            <div class="testimonio">
-
-                <div class="estrellas">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    Excelente atención y un proceso
-                    de compra muy profesional.
-                    Totalmente recomendado.
-
-                </p>
-
-                <h4>
-
-                    Carlos Mendoza
-
-                </h4>
-
-            </div>
-
-            <div class="testimonio">
-
-                <div class="estrellas">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    Encontré exactamente el vehículo
-                    que buscaba. La experiencia fue
-                    increíble.
-
-                </p>
-
-                <h4>
-
-                    María González
-
-                </h4>
-
-            </div>
-
-            <div class="testimonio">
-
-                <div class="estrellas">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    El financiamiento fue rápido y
-                    transparente. Muy satisfecho.
-
-                </p>
-
-                <h4>
-
-                    José Ramírez
-
-                </h4>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<div class="linea-premium"></div>
-
-
-
-<!-- ========================= -->
-<!-- FOOTER PREMIUM -->
-<!-- ========================= -->
-
-</main>
-<footer class="footer">
-
-    <div class="container">
-
-        <div class="footer-content">
-
-            <!-- COLUMNA 1 -->
-
-            <div class="footer-box">
-
-                <h3>AutoMundo Premium</h3>
-
-                <p>
-
-                    Concesionario especializado en
-                    vehículos premium, ofreciendo
-                    calidad, confianza y excelencia
-                    en cada experiencia.
-
-                </p>
-
-            </div>
-
-            <!-- COLUMNA 2 -->
-
-            <div class="footer-box">
-
-                <h3>Enlaces</h3>
-
-                <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Inicio
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inventario.html">
-                            Inventario
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="servicios.html">
-                            Servicios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contacto.html">
-                            Contacto
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <!-- COLUMNA 3 -->
-
-            <div class="footer-box">
-
-                <h3>Contacto</h3>
-
-                <p>📞 +58 424 724 5512</p>
-
-                <p>✉ contacto@automundo.com</p>
-
-                <p>📍 Venezuela</p>
-
-            </div>
-
-            <!-- COLUMNA 4 -->
-
-            <div class="footer-box">
-
-                <h3>Síguenos</h3>
-
-                <div class="socials">
-
-                    <a href="#">
-                        Facebook
-                    </a>
-
-                    <a href="#">
-                        Instagram
-                    </a>
-
-                    <a href="#">
-                        TikTok
-                    </a>
-
-                    <a href="#">
-                        YouTube
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- LINEA -->
-
-        <div class="footer-line"></div>
-
-        <!-- COPYRIGHT -->
-
-        <div class="footer-bottom">
-
-            <p>
-
-                © 2026 AutoMundo Premium.
-                Todos los derechos reservados.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</footer>
-
-<script src="js/api.js"></script>
-<script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>

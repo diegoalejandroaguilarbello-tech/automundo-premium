@@ -67,7 +67,12 @@ if (loginForm) {
       const data = await parseResponse(response);
 
       if (!response.ok) {
-        showMessage(data.message || "Credenciales incorrectas.", "error");
+        if (response.status >= 500) {
+          const reference = data.requestId ? ` Referencia: ${data.requestId}.` : "";
+          showMessage(`El servidor no pudo iniciar la sesión.${reference}`, "error");
+        } else {
+          showMessage(data.message || "Credenciales incorrectas.", "error");
+        }
         return;
       }
 
@@ -76,7 +81,7 @@ if (loginForm) {
       goToPanel();
     } catch (error) {
       console.error(error);
-      showMessage("Error de conexión. Verifica que el backend esté activo en el puerto 3000.", "error");
+      showMessage("No se pudo conectar con el servidor. Intenta nuevamente.", "error");
     }
   });
 }
