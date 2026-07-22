@@ -9,9 +9,24 @@ const PHONE_PATTERN =
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
+const TURNSTILE_TEST_SECRET_KEY =
+  "1x0000000000000000000000000000000AA";
+
+function getTurnstileSecretKey() {
+  const configuredKey =
+    process.env.TURNSTILE_SECRET_KEY?.trim();
+
+  if (configuredKey) {
+    return configuredKey;
+  }
+
+  return process.env.NODE_ENV === "production"
+    ? ""
+    : TURNSTILE_TEST_SECRET_KEY;
+}
+
 async function verifyTurnstileToken(token) {
-  const secretKey =
-    process.env.TURNSTILE_SECRET_KEY;
+  const secretKey = getTurnstileSecretKey();
 
   if (!secretKey) {
     const error = new Error(
@@ -400,13 +415,19 @@ async function listLeads(req, res, next) {
 
     const where = [];
 
-    const params = {
-      limit: Math.min(
-        Number(limit) || 50,
-        100
-      ),
-      offset: Number(offset) || 0,
-    };
+    // Railway/MySQL rechaza en algunos entornos LIMIT/OFFSET como
+    // parámetros de sentencias preparadas. Se normalizan como enteros
+    // antes de interpolarlos para mantener la consulta segura.
+    const safeLimit = Math.min(
+      Math.max(Math.trunc(Number(limit)) || 50, 1),
+      100
+    );
+    const safeOffset = Math.max(
+      Math.trunc(Number(offset)) || 0,
+      0
+    );
+
+    const params = {};
 
     if (status) {
       where.push("l.status = :status");
@@ -431,8 +452,8 @@ async function listLeads(req, res, next) {
         ON v.id = l.vehicle_id
       ${whereSql}
       ORDER BY l.created_at DESC
-      LIMIT :limit
-      OFFSET :offset
+      LIMIT ${safeLimit}
+      OFFSET ${safeOffset}
       `,
       params
     );

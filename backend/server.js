@@ -1,8 +1,10 @@
 const path = require("path");
+const { randomUUID } = require("crypto");
 require("dotenv").config({ path: path.join(__dirname, ".env"), quiet: true });
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const pool = require("./config/database");
 
 const authRoutes = require("./routes/authRoutes");
 const vehicleRoutes = require("./routes/vehicleRoutes");
@@ -15,7 +17,15 @@ const catalogRoutes = require("./routes/catalogRoutes");
 
 const app = express();
 
+const TURNSTILE_TEST_SITE_KEY =
+  "1x00000000000000000000AA";
+
 app.disable("x-powered-by");
+app.use((req, res, next) => {
+  req.requestId = req.headers["x-request-id"] || randomUUID();
+  res.setHeader("X-Request-ID", req.requestId);
+  next();
+});
 const configuredOrigins = (process.env.FRONTEND_URL || "")
   .split(",")
   .map((origin) => origin.trim())
@@ -73,6 +83,41 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+app.get("/api/config/public", (req, res) => {
+  const configuredSiteKey =
+    process.env.TURNSTILE_SITE_KEY?.trim();
+
+  const turnstileSiteKey =
+    configuredSiteKey ||
+    (process.env.NODE_ENV === "production"
+      ? ""
+      : TURNSTILE_TEST_SITE_KEY);
+
+  res.setHeader("Cache-Control", "no-store");
+  return res.json({
+    turnstileSiteKey,
+    turnstileConfigured: Boolean(turnstileSiteKey),
+  });
+});
+
+app.get("/api/ready", async (req, res) => {
+  try {
+    await pool.query("SELECT 1 AS ready");
+    return res.json({
+      status: "ok",
+      database: "available",
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error(`[${req.requestId}] Base de datos no disponible:`, error.message);
+    return res.status(503).json({
+      status: "degraded",
+      database: "unavailable",
+      requestId: req.requestId,
+    });
+  }
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/vehicles", vehicleRoutes);
@@ -96,11 +141,12 @@ app.use((req, res) => {
 });
 
 app.use((error, req, res, next) => {
-  console.error(error);
+  console.error(`[${req.requestId}]`, error);
   const status = error.status || 500;
   res.status(status).json({
     message: status === 500 ? "Error interno del servidor" : error.message,
     detail: process.env.NODE_ENV === "production" ? undefined : error.message,
+    requestId: req.requestId,
   });
 });
 

@@ -12,6 +12,7 @@ const leadsTableBody = document.getElementById("leadsTableBody");
 const quotesTableBody = document.getElementById("quotesTableBody");
 const refreshLeadsButton = document.getElementById("refreshLeadsButton");
 const refreshQuotesButton = document.getElementById("refreshQuotesButton");
+const dashboardStatus = document.getElementById("dashboardStatus");
 
 let editingVehicleId = null;
 let vehiclesCache = [];
@@ -33,8 +34,34 @@ async function parseResponse(response) {
   try {
     return text ? JSON.parse(text) : {};
   } catch {
-    return {};
+    return {
+      message: response.ok
+        ? ""
+        : "El servidor devolvió una respuesta que no se pudo interpretar.",
+    };
   }
+}
+
+function showDashboardStatus(text = "", type = "error") {
+  if (!dashboardStatus) return;
+  dashboardStatus.textContent = text;
+  dashboardStatus.className = text ? `dashboard-status ${type}` : "dashboard-status hidden";
+}
+
+function handleUnauthorized(response) {
+  if (response.status === 401) {
+    redirectToLogin();
+    return true;
+  }
+  return false;
+}
+
+function responseError(response, data, fallback) {
+  if (response.status >= 500) {
+    const reference = data.requestId ? ` Referencia: ${data.requestId}.` : "";
+    return `${fallback}. El servidor no pudo completar la consulta.${reference}`;
+  }
+  return data.message || fallback;
 }
 
 function redirectToLogin() {
@@ -124,17 +151,22 @@ async function verifySession() {
     const data = await parseResponse(response);
 
     if (!response.ok) {
-      throw new Error(data.message || "Sesión inválida");
+      if (handleUnauthorized(response)) return;
+      throw new Error(responseError(response, data, "No se pudo validar la sesión"));
     }
 
     if (welcomeMessage) {
       welcomeMessage.textContent = `Bienvenido, ${data.user.name} (${data.user.role})`;
     }
 
+    showDashboardStatus("");
     await Promise.allSettled([loadVehicles(), loadLeads(), loadQuotes()]);
   } catch (error) {
     console.error(error);
-    redirectToLogin();
+    showDashboardStatus(
+      `${error.message}. Puedes reintentar con los botones de actualización.`,
+      "error"
+    );
   }
 }
 
@@ -151,7 +183,8 @@ async function loadVehicles() {
     const data = await parseResponse(response);
 
     if (!response.ok) {
-      throw new Error(data.message || "No se pudieron cargar los vehículos");
+      if (handleUnauthorized(response)) return;
+      throw new Error(responseError(response, data, "No se pudieron cargar los vehículos"));
     }
 
     vehiclesCache = data.vehicles || [];
@@ -318,7 +351,10 @@ async function loadLeads() {
     });
     const data = await parseResponse(response);
 
-    if (!response.ok) throw new Error(data.message || "No se pudieron cargar los leads");
+    if (!response.ok) {
+      if (handleUnauthorized(response)) return;
+      throw new Error(responseError(response, data, "No se pudieron cargar los clientes interesados"));
+    }
 
     renderLeads(data.leads || []);
   } catch (error) {
@@ -379,7 +415,10 @@ async function loadQuotes() {
     });
     const data = await parseResponse(response);
 
-    if (!response.ok) throw new Error(data.message || "No se pudieron cargar las cotizaciones");
+    if (!response.ok) {
+      if (handleUnauthorized(response)) return;
+      throw new Error(responseError(response, data, "No se pudieron cargar las cotizaciones"));
+    }
 
     renderQuotes(data.quotes || []);
   } catch (error) {

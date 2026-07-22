@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Administrativo | AutoMundo</title>
-  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
   <main class="admin-page panel-page">
     <section class="dashboard" id="dashboardSection">
       <div class="dashboard-header">
-        <div>
-          <h1>Panel Administrativo</h1>
-          <p id="welcomeMessage">Bienvenido</p>
+        <div class="dashboard-heading">
+          <img src="img/logo-mark.svg" alt="" width="54" height="54">
+          <div>
+            <h1>Panel administrativo</h1>
+            <p id="welcomeMessage">Bienvenido</p>
+          </div>
         </div>
 
-        <button id="logoutButton" class="logout-btn">Cerrar sesión</button>
+        <button id="logoutButton" class="logout-btn" type="button">Cerrar sesión</button>
       </div>
+
+      <p id="dashboardStatus" class="dashboard-status hidden" role="status" aria-live="polite"></p>
 
       <div class="dashboard-grid">
         <article class="dashboard-card">
@@ -34,7 +43,7 @@
           <p>Consulta solicitudes de financiamiento.</p>
         </article>
       </div>
-      
+
       <section class="vehicle-form-section">
   <div class="section-header">
     <div>
@@ -47,22 +56,22 @@
     <div class="form-grid">
       <div class="form-group">
         <label for="brand">Marca *</label>
-        <input type="text" id="brand" name="brand" placeholder="Toyota" required />
+        <input type="text" id="brand" name="brand" placeholder="Toyota" required>
       </div>
 
       <div class="form-group">
         <label for="model">Modelo *</label>
-        <input type="text" id="model" name="model" placeholder="Corolla" required />
+        <input type="text" id="model" name="model" placeholder="Corolla" required>
       </div>
 
       <div class="form-group">
         <label for="version">Versión</label>
-        <input type="text" id="version" name="version" placeholder="XEI 2.0" />
+        <input type="text" id="version" name="version" placeholder="XEI 2.0">
       </div>
 
       <div class="form-group">
         <label for="year">Año *</label>
-        <input type="number" id="year" name="year" placeholder="2024" min="1950" max="2100" required />
+        <input type="number" id="year" name="year" placeholder="2024" min="1950" max="2100" required>
       </div>
 
       <div class="form-group">
@@ -89,12 +98,12 @@
 
       <div class="form-group">
         <label for="price">Precio *</label>
-        <input type="number" id="price" name="price" placeholder="25000" min="0" step="0.01" required />
+        <input type="number" id="price" name="price" placeholder="25000" min="0" step="0.01" required>
       </div>
 
       <div class="form-group">
         <label for="mileage">Kilometraje</label>
-        <input type="number" id="mileage" name="mileage" placeholder="0" min="0" />
+        <input type="number" id="mileage" name="mileage" placeholder="0" min="0">
       </div>
 
       <div class="form-group">
@@ -119,7 +128,7 @@
 
       <div class="form-group">
         <label for="color">Color</label>
-        <input type="text" id="color" name="color" placeholder="Blanco" />
+        <input type="text" id="color" name="color" placeholder="Blanco">
       </div>
 
       <div class="form-group">
@@ -139,7 +148,7 @@
 
       <div class="form-group form-group-full">
         <label for="image">Imagen del vehículo</label>
-        <input type="file" id="image" name="image" accept="image/*,.jpg,.jpeg,.jfif,.png,.webp" />
+        <input type="file" id="image" name="image" accept="image/*,.jpg,.jpeg,.jfif,.png,.webp">
         <small>Formatos permitidos: JPG, PNG o WEBP. Máximo 5MB.</small>
       </div>
     </div>
@@ -161,7 +170,7 @@
             <p>Listado conectado directamente con la base de datos.</p>
           </div>
 
-          <button id="refreshVehiclesButton" class="secondary-btn">
+          <button id="refreshVehiclesButton" class="secondary-btn" type="button">
             Actualizar lista
           </button>
         </div>
@@ -170,12 +179,12 @@
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Vehículo</th>
-                <th>Año</th>
-                <th>Precio</th>
-                <th>Kilometraje</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                <th scope="col">Vehículo</th>
+                <th scope="col">Año</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Kilometraje</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody id="vehiclesTableBody">
@@ -194,7 +203,7 @@
             <p>Solicitudes recibidas desde el formulario de contacto.</p>
           </div>
 
-          <button id="refreshLeadsButton" class="secondary-btn">
+          <button id="refreshLeadsButton" class="secondary-btn" type="button">
             Actualizar clientes
           </button>
         </div>
@@ -203,13 +212,13 @@
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Vehículo</th>
-                <th>Origen</th>
-                <th>Estado</th>
-                <th>Fecha</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Vehículo</th>
+                <th scope="col">Origen</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha</th>
               </tr>
             </thead>
             <tbody id="leadsTableBody">
@@ -228,7 +237,7 @@
             <p>Solicitudes guardadas desde el simulador financiero.</p>
           </div>
 
-          <button id="refreshQuotesButton" class="secondary-btn">
+          <button id="refreshQuotesButton" class="secondary-btn" type="button">
             Actualizar cotizaciones
           </button>
         </div>
@@ -237,13 +246,13 @@
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Vehículo</th>
-                <th>Precio</th>
-                <th>Plazo</th>
-                <th>Cuota</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Vehículo</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Plazo</th>
+                <th scope="col">Cuota</th>
               </tr>
             </thead>
             <tbody id="quotesTableBody">

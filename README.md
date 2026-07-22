@@ -1,6 +1,6 @@
-# Proyecto de Concesionario
+# AutoMundo Premium
 
-Proyecto web full stack para un concesionario de vehículos. Mantiene la idea original del frontend en HTML, CSS y JavaScript, con backend en Node.js, Express y base de datos MySQL.
+Proyecto web full stack para un concesionario de vehículos, con una interfaz premium y adaptable, backend en Node.js y Express, y base de datos MySQL.
 
 ## Estructura corregida
 
@@ -38,6 +38,8 @@ Proyecto de Concesionario/
 - Login administrativo con JWT.
 - Panel administrativo para crear, editar, eliminar y listar vehículos.
 - Panel administrativo para consultar leads y cotizaciones.
+- Migraciones idempotentes ejecutadas antes de cada arranque.
+- Diagnóstico de disponibilidad de MySQL para Railway.
 - Configuración compatible con MySQL local y MySQL de Railway.
 
 ## Requisitos locales
@@ -53,7 +55,7 @@ Proyecto de Concesionario/
 Desde la raíz del proyecto:
 
 ```bash
-npm install
+npm ci
 ```
 
 ### 2. Crear archivo de entorno
@@ -78,7 +80,7 @@ DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=
 DB_NAME=automundo
-JWT_SECRET=CAMBIA_ESTE_SECRETO_LARGO_EN_PRODUCCION
+JWT_SECRET=GENERA_UN_SECRETO_ALEATORIO_DE_AL_MENOS_32_CARACTERES
 ```
 
 ### 3. Crear o actualizar la base de datos local
@@ -107,6 +109,12 @@ Abre:
 http://localhost:3000
 ```
 
+Para ejecutar las pruebas de regresión:
+
+```bash
+npm test
+```
+
 ## Acceso administrativo
 
 ```txt
@@ -122,6 +130,8 @@ Cambia esa contraseña antes de usar el proyecto públicamente.
 ### Público
 
 - `GET /api/health`
+- `GET /api/ready`
+- `GET /api/config/public`
 - `GET /api/vehicles`
 - `GET /api/vehicles/:id`
 - `GET /api/catalog/brands`
@@ -171,14 +181,17 @@ Este proyecto está preparado para desplegarse como un solo servicio: Express si
 
 ```txt
 NODE_ENV=production
-JWT_SECRET=un_secreto_largo_y_seguro
+JWT_SECRET=un_valor_aleatorio_de_al_menos_32_caracteres
 JWT_EXPIRES_IN=8h
+TURNSTILE_SITE_KEY=sitekey_publica_configurada_en_cloudflare
+TURNSTILE_SECRET_KEY=secreto_configurado_en_cloudflare
 ```
 
 Railway agregará automáticamente variables como `MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE` o `MYSQL_URL` al conectar MySQL. El backend ya las reconoce.
 
-5. Inicializa las tablas con `database/init.sql` en la base MySQL de Railway.
-6. Railway usará `railway.json` para iniciar con:
+5. Al iniciar, `prestart` ejecuta migraciones idempotentes. Conserva usuarios, contraseñas y datos existentes.
+6. Solo en una instalación nueva, ejecuta una vez `npm run seed` para cargar el administrador y los vehículos de ejemplo. El sembrado ya no sobrescribe la contraseña de un administrador existente.
+7. Railway usará `railway.json` para instalar dependencias con `npm ci`, iniciar con `npm start` y comprobar MySQL mediante `/api/ready`.
 
 ```bash
 npm start
@@ -189,4 +202,5 @@ npm start
 - No abras el frontend con doble clic si quieres probarlo conectado a la API. Usa `http://localhost:3000`.
 - La carpeta `node_modules` fue excluida porque no debe subirse a GitHub.
 - El archivo `.env` fue excluido por seguridad. Usa `.env.example` como plantilla.
+- Cambia la contraseña inicial del administrador antes de exponer el panel públicamente.
 - En producción real, las imágenes subidas a `backend/uploads` pueden perderse si el servicio no tiene almacenamiento persistente. Para una versión comercial conviene usar Cloudinary, S3 o almacenamiento equivalente.

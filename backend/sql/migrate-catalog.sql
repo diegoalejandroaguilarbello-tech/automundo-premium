@@ -19,8 +19,6 @@ CREATE TABLE IF NOT EXISTS vehicle_models (
   UNIQUE KEY uq_model_brand_slug (brand_id, slug)
 ) ENGINE=InnoDB;
 
-ALTER TABLE vehicles ADD COLUMN IF NOT EXISTS model_id INT NULL AFTER model;
-
 INSERT INTO brands (name, slug)
 SELECT DISTINCT brand, LOWER(REPLACE(brand, ' ', '-')) FROM vehicles
 ON DUPLICATE KEY UPDATE active = TRUE;

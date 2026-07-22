@@ -308,8 +308,8 @@ async function listAdminVehicles(req, res, next) {
     const where = [];
     const params = {
       search: `%${search}%`,
-      limit: Math.min(Number(limit) || 100, 200),
-      offset: Number(offset) || 0,
+      limit: Math.min(Math.max(Math.trunc(Number(limit)) || 100, 1), 200),
+      offset: Math.max(Math.trunc(Number(offset)) || 0, 0),
     };
 
     if (search) {

@@ -1,511 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-<title>AutoMundo Premium</title>
-
-<meta
-    name="description"
-    content="Concesionario premium de vehículos de lujo">
-
-
-<link
-    rel="stylesheet"
-    href="css/style.css">
-
-<link
-    rel="stylesheet"
-    href="css/navbar.css">
-
-<link
-    rel="stylesheet"
-    href="css/servicios.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce los servicios de venta, financiamiento, garantía, mantenimiento y prueba de manejo de AutoMundo Premium.">
+  <meta name="theme-color" content="#0b0e13">
+  <title>Servicios | AutoMundo Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body>
-
-<!-- ========================= -->
-<!-- NAVBAR GLOBAL -->
-<!-- ========================= -->
-
-<header>
-
-<nav class="navbar">
-
-    <div class="logo">
-
-        <img
-            src="img/logo.png"
-            alt="AutoMundo Premium">
-
-        <div class="logo-text">
-
-            <h1>AutoMundo</h1>
-
-            <span>PREMIUM</span>
-
-        </div>
-
-    </div>
-
-    <ul class="nav-links">
-
-        <li>
-
-            <a href="index.html">
-
-                Inicio
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="inventario.html">
-
-                Inventario
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="servicios.html">
-
-                Servicios
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="financiamiento.html">
-
-                Financiamiento
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="nosotros.html">
-
-                Nosotros
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="contacto.html">
-
-                Contacto
-
-            </a>
-
-        </li>
-
-    </ul>
-
-    <div class="navbar-actions">
-
-        <a
-
-            href="https://wa.me/584247245512"
-
-            target="_blank"
-
-            class="btn-whatsapp">
-
-            WhatsApp
-
+<body class="page-services">
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="logo" href="index.html" aria-label="AutoMundo Premium, inicio">
+        <img class="logo-mark" src="img/logo-mark.svg" alt="" width="44" height="44">
+        <span class="logo-text"><strong class="logo-name">AutoMundo</strong><span>Premium</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li><li><a href="inventario.html">Inventario</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="financiamiento.html">Financiamiento</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <a class="btn-whatsapp" href="https://wa.me/584247245512?text=Hola%2C%20quiero%20conocer%20los%20servicios%20de%20AutoMundo%20Premium." target="_blank" rel="noopener noreferrer" aria-label="Hablar con un asesor por WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.5c.4 2.6 1.9 4.1 4.5 4.9l1.2-1 1.8.9c.2.1.3.3.2.6-.3 1.2-1.3 1.8-2.5 1.6-4.3-.8-6.8-3.4-7.6-7.6-.2-1.2.5-2.2 1.6-2.5.3-.1.5 0 .6.2l.9 1.8L9 8.5Z" fill="currentColor"/></svg><span>Hablar con asesor</span>
         </a>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
 
-    </div>
-
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-    </button>
-
-</nav>
-
-</header>
-<main id="contenido-principal">
-
-<br>
-<!-- ========================================= -->
-<!-- HERO SERVICIOS PREMIUM -->
-<!-- ========================================= -->
-
-<section class="hero-servicios">
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <br>
-        <br>
-
-        <span class="hero-tag">
-            ✦ AutoMundo Premium
-        </span>
-
-        <h2>
-            Servicios Exclusivos para tu Vehículo
-        </h2>
-
-        <p>
-            Desde la compra hasta el mantenimiento, ponemos a tu disposición un equipo especializado para ofrecerte una experiencia automotriz de primer nivel.
-        </p>
-
+  <main id="contenido-principal">
+    <section class="hero-servicios" aria-labelledby="services-title">
+      <div class="hero-content">
+        <span class="hero-tag">Servicio integral</span>
+        <h1 id="services-title">Todo lo que necesitas, bien coordinado.</h1>
+        <p>Compra, financiamiento y cuidado del vehículo con un equipo que mantiene la información y el proceso bajo control.</p>
         <div class="hero-buttons">
-
-            <a href="contacto.html" class="btn-primary">
-                Solicitar Asesoría
-            </a>
-
-            <a href="#servicios" class="btn-secondary">
-                Explorar Servicios
-            </a>
-
+          <a href="contacto.html" class="btn-primary">Solicitar asesoría</a>
+          <a href="#servicios" class="btn-secondary">Explorar servicios</a>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <section class="servicios" id="servicios" aria-labelledby="services-grid-title">
+      <div class="section-title">
+        <span>Servicios AutoMundo</span>
+        <h2 id="services-grid-title">Soluciones para toda la experiencia de compra.</h2>
+        <p>Organizamos los servicios esenciales en un solo lugar para que avances con claridad.</p>
+      </div>
 
-</section>
-
-<!-- ========================================= -->
-<!-- SERVICIOS -->
-<!-- ========================================= -->
-
-<section class="servicios" id="servicios">
-
-    <div class="section-title">
-
-        <span>NUESTROS SERVICIOS</span>
-
-        <h2>Todo lo que tu vehículo necesita</h2>
-
-        <p>
-            Soluciones diseñadas para brindarte seguridad, confianza y una atención personalizada.
-        </p>
-
-    </div>
-
-    <div class="container">
-
+      <div class="container">
         <div class="grid">
-
-            <article class="card">
-
-                <div class="icon">
-                    🚗
-                </div>
-
-                <h3>Venta Premium</h3>
-
-                <p>
-                    Vehículos nuevos y seminuevos certificados con inspección completa y garantía.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
-            <article class="card">
-
-                <div class="icon">
-                    💳
-                </div>
-
-                <h3>Financiamiento</h3>
-
-                <p>
-                    Planes flexibles adaptados a tus necesidades con aprobación rápida.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
-            <article class="card">
-
-                <div class="icon">
-                    🔧
-                </div>
-
-                <h3>Taller Especializado</h3>
-
-                <p>
-                    Mantenimiento preventivo y correctivo realizado por técnicos certificados.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
-            <article class="card">
-
-                <div class="icon">
-                    🛡️
-                </div>
-
-                <h3>Seguros Premium</h3>
-
-                <p>
-                    Protección completa para tu vehículo con las mejores aseguradoras.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
-            <article class="card">
-
-                <div class="icon">
-                    ⭐
-                </div>
-
-                <h3>Garantía Extendida</h3>
-
-                <p>
-                    Amplía la cobertura de tu vehículo y conduce con total tranquilidad.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
-            <article class="card">
-
-                <div class="icon">
-                    🚘
-                </div>
-
-                <h3>Prueba de Manejo</h3>
-
-                <p>
-                    Agenda una experiencia personalizada antes de tomar tu decisión.
-                </p>
-
-                <a href="#">Más información →</a>
-
-            </article>
-
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m4 15 2-5 2-2h8l2 2 2 5v4h-2v-2H6v2H4v-4Z" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 13h10M7.5 8l1-3h7l1 3M7 15h.01M17 15h.01" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3>Venta y selección</h3><p>Unidades nuevas y certificadas con información técnica ordenada y revisión previa.</p><a href="inventario.html">Ver inventario →</a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.8"/><path d="M3 9h18M7 15h4" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3>Financiamiento</h3><p>Escenarios de pago configurables y solicitud de evaluación desde el simulador.</p><a href="financiamiento.html">Simular cuota →</a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m14.7 6.3 3-3a5 5 0 0 1-6.4 6.4L5 16l3 3 6.3-6.3a5 5 0 0 1 6.4-6.4l-3 3-3-3Z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m5 16-2 2 3 3 2-2" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <h3>Mantenimiento</h3><p>Orientación preventiva y coordinación de servicio técnico especializado.</p><a href="contacto.html">Solicitar información →</a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.6 2.9 8.5 7 10 4.1-1.5 7-5.4 7-10V6l-7-3Z" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Protección y seguros</h3><p>Opciones de cobertura pensadas para proteger la unidad y tu inversión.</p><a href="contacto.html">Consultar cobertura →</a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v16l-6-3-6 3V4Z" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 10 2 2 4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Garantía extendida</h3><p>Alternativas de respaldo para reducir imprevistos después de la compra.</p><a href="contacto.html">Conocer opciones →</a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke-width="1.8"/><path d="M12 12 8 8m4 4 5-2M12 12v6" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3>Prueba de manejo</h3><p>Agenda una visita y evalúa el vehículo antes de tomar una decisión.</p><a href="contacto.html">Agendar prueba →</a>
+          </article>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <section class="estadisticas" aria-label="Cifras de servicio">
+      <div class="stat"><h3>12+</h3><span>Años de experiencia</span></div>
+      <div class="stat"><h3>500+</h3><span>Vehículos entregados</span></div>
+      <div class="stat"><h3>98%</h3><span>Clientes satisfechos</span></div>
+      <div class="stat"><h3>24 h</h3><span>Tiempo de respuesta</span></div>
+    </section>
 
-</section>
+    <section class="cta">
+      <span class="eyebrow">Atención personalizada</span>
+      <h2>Cuéntanos qué necesitas.</h2>
+      <p>Un asesor revisará tu solicitud y te indicará el siguiente paso con información concreta.</p>
+      <a href="contacto.html" class="btn-primary">Contactar un asesor</a>
+    </section>
+  </main>
 
-<!-- ========================================= -->
-<!-- ESTADÍSTICAS -->
-<!-- ========================================= -->
-
-<section class="estadisticas">
-
-    <div class="stat">
-
-        <h3>12+</h3>
-
-        <span>Años de experiencia</span>
-
-    </div>
-
-    <div class="stat">
-
-        <h3>500+</h3>
-
-        <span>Clientes satisfechos</span>
-
-    </div>
-
-    <div class="stat">
-
-        <h3>98%</h3>
-
-        <span>Satisfacción garantizada</span>
-
-    </div>
-
-    <div class="stat">
-
-        <h3>24/7</h3>
-
-        <span>Atención personalizada</span>
-
-    </div>
-
-</section>
-
-<!-- ========================================= -->
-<!-- CTA FINAL -->
-<!-- ========================================= -->
-
-<section class="cta">
-
-    <h2>
-        Tu próximo vehículo comienza aquí.
-    </h2>
-
-    <p>
-        Nuestro equipo está listo para ayudarte a encontrar la mejor opción para ti.
-    </p>
-
-    <a href="contacto.html" class="btn-primary">
-        Contactar un Asesor
-    </a>
-
-</section>
-
-<!-- ========================= -->
-<!-- FOOTER PREMIUM -->
-<!-- ========================= -->
-
-</main>
-<footer class="footer">
-
+  <footer class="footer">
     <div class="container">
-
-        <div class="footer-content">
-
-            <!-- COLUMNA 1 -->
-
-            <div class="footer-box">
-
-                <h3>AutoMundo Premium</h3>
-
-                <p>
-
-                    Concesionario especializado en
-                    vehículos premium, ofreciendo
-                    calidad, confianza y excelencia
-                    en cada experiencia.
-
-                </p>
-
-            </div>
-
-            <!-- COLUMNA 2 -->
-
-            <div class="footer-box">
-
-                <h3>Enlaces</h3>
-
-                <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Inicio
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inventario.html">
-                            Inventario
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="servicios.html">
-                            Servicios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contacto.html">
-                            Contacto
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <!-- COLUMNA 3 -->
-
-            <div class="footer-box">
-
-                <h3>Contacto</h3>
-
-                <p>📞 +58 424 724 5512</p>
-
-                <p>✉ contacto@automundo.com</p>
-
-                <p>📍 Venezuela</p>
-
-            </div>
-
-            <!-- COLUMNA 4 -->
-
-            <div class="footer-box">
-
-                <h3>Síguenos</h3>
-
-                <div class="socials">
-
-                    <a href="#">
-                        Facebook
-                    </a>
-
-                    <a href="#">
-                        Instagram
-                    </a>
-
-                    <a href="#">
-                        TikTok
-                    </a>
-
-                    <a href="#">
-                        YouTube
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- LINEA -->
-
-        <div class="footer-line"></div>
-
-        <!-- COPYRIGHT -->
-
-        <div class="footer-bottom">
-
-            <p>
-
-                © 2026 AutoMundo Premium.
-                Todos los derechos reservados.
-
-            </p>
-
-        </div>
-
+      <div class="footer-content">
+        <div class="footer-box"><h3>AutoMundo Premium</h3><p>Vehículos seleccionados, información clara y acompañamiento profesional.</p></div>
+        <div class="footer-box"><h3>Explorar</h3><ul><li><a href="inventario.html">Inventario</a></li><li><a href="financiamiento.html">Financiamiento</a></li><li><a href="nosotros.html">Nosotros</a></li></ul></div>
+        <div class="footer-box"><h3>Servicios</h3><ul><li><a href="servicios.html">Venta y asesoría</a></li><li><a href="servicios.html">Garantía y mantenimiento</a></li><li><a href="contacto.html">Prueba de manejo</a></li></ul></div>
+        <div class="footer-box"><h3>Contacto</h3><p><a href="tel:+584247245512">+58&nbsp;424&nbsp;724&nbsp;5512</a></p><p><a href="mailto:contacto@automundo.com">contacto@automundo.com</a></p><p>Venezuela</p></div>
+      </div>
+      <div class="footer-line"></div><div class="footer-bottom"><p>© 2026 AutoMundo Premium. Todos los derechos reservados.</p><p>Compra informada. Atención personalizada.</p></div>
     </div>
+  </footer>
 
-</footer>
-
-<script src="js/main.js"></script>
-<script src="js/servicios.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/servicios.js"></script>
 </body>
-
 </html>
