@@ -17,6 +17,9 @@ const catalogRoutes = require("./routes/catalogRoutes");
 
 const app = express();
 
+const TURNSTILE_TEST_SITE_KEY =
+  "1x00000000000000000000AA";
+
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   req.requestId = req.headers["x-request-id"] || randomUUID();
@@ -78,6 +81,23 @@ app.get("/api", (req, res) => {
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+app.get("/api/config/public", (req, res) => {
+  const configuredSiteKey =
+    process.env.TURNSTILE_SITE_KEY?.trim();
+
+  const turnstileSiteKey =
+    configuredSiteKey ||
+    (process.env.NODE_ENV === "production"
+      ? ""
+      : TURNSTILE_TEST_SITE_KEY);
+
+  res.setHeader("Cache-Control", "no-store");
+  return res.json({
+    turnstileSiteKey,
+    turnstileConfigured: Boolean(turnstileSiteKey),
+  });
 });
 
 app.get("/api/ready", async (req, res) => {

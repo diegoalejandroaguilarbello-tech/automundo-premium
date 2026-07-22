@@ -9,9 +9,24 @@ const PHONE_PATTERN =
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
+const TURNSTILE_TEST_SECRET_KEY =
+  "1x0000000000000000000000000000000AA";
+
+function getTurnstileSecretKey() {
+  const configuredKey =
+    process.env.TURNSTILE_SECRET_KEY?.trim();
+
+  if (configuredKey) {
+    return configuredKey;
+  }
+
+  return process.env.NODE_ENV === "production"
+    ? ""
+    : TURNSTILE_TEST_SECRET_KEY;
+}
+
 async function verifyTurnstileToken(token) {
-  const secretKey =
-    process.env.TURNSTILE_SECRET_KEY;
+  const secretKey = getTurnstileSecretKey();
 
   if (!secretKey) {
     const error = new Error(

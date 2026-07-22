@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/site.css">
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body class="page-contact">
@@ -92,7 +91,7 @@
           <div class="form-honeypot" aria-hidden="true"><label for="contactWebsite">Deja este campo vacío</label><input type="text" id="contactWebsite" name="website" tabindex="-1" autocomplete="off"></div>
 
           <div class="turnstile-field">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAD2ndvZ8oJvw1R6r" data-theme="auto" data-size="flexible" data-language="es"></div>
+            <div id="turnstileWidget" class="turnstile-widget" role="group" aria-label="Verificación de seguridad" aria-busy="true"></div>
             <small id="turnstileError" class="field-error" aria-live="polite"></small>
           </div>
 

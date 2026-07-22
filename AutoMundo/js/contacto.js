@@ -22,6 +22,143 @@ const turnstileError = document.querySelector("#turnstileError");
 const API_BASE_URL =
   window.AUTOMUNDO_API_BASE_URL ||
   "http://localhost:3000/api";
+
+const turnstileWidget =
+  document.querySelector("#turnstileWidget");
+
+let turnstileWidgetId = null;
+let turnstileReady = false;
+let turnstileScriptPromise;
+
+function loadTurnstileApi() {
+  if (window.turnstile) {
+    return Promise.resolve(window.turnstile);
+  }
+
+  if (turnstileScriptPromise) {
+    return turnstileScriptPromise;
+  }
+
+  turnstileScriptPromise = new Promise(
+    (resolve, reject) => {
+      const handleLoad = () => {
+        if (window.turnstile) {
+          resolve(window.turnstile);
+        } else {
+          reject(new Error(
+            "Cloudflare Turnstile no quedó disponible."
+          ));
+        }
+      };
+
+      const existingScript =
+        document.querySelector("#turnstileApi");
+
+      if (existingScript) {
+        existingScript.addEventListener(
+          "load",
+          handleLoad,
+          { once: true }
+        );
+        existingScript.addEventListener(
+          "error",
+          () => reject(new Error(
+            "No se pudo cargar Cloudflare Turnstile."
+          )),
+          { once: true }
+        );
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.id = "turnstileApi";
+      script.src =
+        "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      script.addEventListener("load", handleLoad, {
+        once: true,
+      });
+      script.addEventListener(
+        "error",
+        () => reject(new Error(
+          "No se pudo cargar Cloudflare Turnstile."
+        )),
+        { once: true }
+      );
+      document.head.appendChild(script);
+    }
+  );
+
+  return turnstileScriptPromise;
+}
+
+async function initializeTurnstile() {
+  if (!turnstileWidget) return;
+
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/config/public`,
+      { cache: "no-store" }
+    );
+
+    const config =
+      await response.json().catch(() => ({}));
+
+    if (!response.ok || !config.turnstileSiteKey) {
+      throw new Error(
+        "La verificación de seguridad no está configurada."
+      );
+    }
+
+    const turnstile = await loadTurnstileApi();
+
+    turnstileWidgetId = turnstile.render(
+      turnstileWidget,
+      {
+        sitekey: config.turnstileSiteKey,
+        theme: "auto",
+        size: "flexible",
+        language: "es",
+        callback() {
+          turnstileError.textContent = "";
+        },
+        "error-callback"(errorCode) {
+          turnstileError.textContent =
+            `No se pudo completar la verificación (${errorCode}).`;
+          return true;
+        },
+        "expired-callback"() {
+          turnstileError.textContent =
+            "La verificación venció. Complétala nuevamente.";
+        },
+        "timeout-callback"() {
+          turnstileError.textContent =
+            "La verificación agotó el tiempo. Intenta nuevamente.";
+        },
+      }
+    );
+
+    turnstileReady = true;
+    turnstileWidget.setAttribute(
+      "aria-busy",
+      "false"
+    );
+  } catch (error) {
+    turnstileReady = false;
+    turnstileWidget.setAttribute(
+      "aria-busy",
+      "false"
+    );
+    turnstileError.textContent =
+      error.message ||
+      "No se pudo iniciar la verificación de seguridad.";
+    console.error(error);
+  }
+}
+
+initializeTurnstile();
+
 if (contactForm) {
   contactForm.noValidate = true;
 
@@ -265,6 +402,18 @@ if (contactForm) {
       event.preventDefault();
 
       setFormStatus("");
+
+if (!turnstileReady) {
+  turnstileError.textContent =
+    turnstileError.textContent ||
+    "Espera a que cargue la verificación de seguridad.";
+  setFormStatus(
+    "La verificación de seguridad todavía no está disponible.",
+    "error"
+  );
+  return;
+}
+
 turnstileError.textContent = "";
 
 if (!validateForm()) {
@@ -390,8 +539,11 @@ const fullName =
         setFormStatus(message, "error");
         console.error(error);
       } finally {
-       if (window.turnstile) {
-        window.turnstile.reset();
+       if (
+         window.turnstile &&
+         turnstileWidgetId !== null
+       ) {
+        window.turnstile.reset(turnstileWidgetId);
         }
 
        contactSubmitButton.disabled = false;

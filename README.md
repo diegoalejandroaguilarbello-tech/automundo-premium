@@ -131,6 +131,7 @@ Cambia esa contraseña antes de usar el proyecto públicamente.
 
 - `GET /api/health`
 - `GET /api/ready`
+- `GET /api/config/public`
 - `GET /api/vehicles`
 - `GET /api/vehicles/:id`
 - `GET /api/catalog/brands`
@@ -182,6 +183,7 @@ Este proyecto está preparado para desplegarse como un solo servicio: Express si
 NODE_ENV=production
 JWT_SECRET=un_valor_aleatorio_de_al_menos_32_caracteres
 JWT_EXPIRES_IN=8h
+TURNSTILE_SITE_KEY=sitekey_publica_configurada_en_cloudflare
 TURNSTILE_SECRET_KEY=secreto_configurado_en_cloudflare
 ```
 

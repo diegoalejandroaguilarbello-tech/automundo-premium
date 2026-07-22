@@ -45,6 +45,7 @@ MYSQL_URL
 
 - `GET /api/health`
 - `GET /api/ready`
+- `GET /api/config/public`
 - `GET /api/vehicles`
 - `POST /api/auth/login`
 - `GET /api/admin/vehicles`
